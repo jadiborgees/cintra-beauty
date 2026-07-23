@@ -1,0 +1,89 @@
+<article class="card">
+
+  <div
+    class="card__imagem-area"
+    (click)="abrirDetalhes()"
+  >
+
+    @if (produto().novidade) {
+      <span class="card__selo">
+        Novo
+      </span>
+    }
+
+    @if (produto().maisVendido) {
+      <span class="card__selo card__selo--dourado">
+        Mais vendido
+      </span>
+    }
+
+    <button
+      type="button"
+      class="card__favorito"
+      [class.card__favorito--ativo]="favoritado()"
+      [attr.aria-label]="
+        favoritado()
+          ? 'Remover dos favoritos'
+          : 'Adicionar aos favoritos'
+      "
+      (click)="$event.stopPropagation(); alternarFavorito()"
+    >
+      <i
+        class="bi"
+        [class.bi-heart]="!favoritado()"
+        [class.bi-heart-fill]="favoritado()"
+      ></i>
+    </button>
+
+    <img
+      [src]="produto().imagem"
+      [alt]="produto().nome"
+      class="card__imagem"
+    >
+
+  </div>
+
+  <div class="card__conteudo">
+
+    <h3
+      class="card__nome"
+      (click)="abrirDetalhes()"
+    >
+      {{ produto().nome }}
+    </h3>
+
+    <p class="card__marca">
+      {{ produto().marca }}
+    </p>
+
+    <p class="card__volume">
+      {{ produto().volume }}
+    </p>
+
+    <strong class="card__preco">
+      {{
+        produto().preco
+          | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+      }}
+    </strong>
+
+    <p class="card__parcelamento">
+      ou 10x de
+      {{
+        produto().preco / 10
+          | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+      }}
+    </p>
+
+    <button
+      type="button"
+      class="card__botao"
+      (click)="adicionarAoCarrinho()"
+    >
+      <i class="bi bi-bag"></i>
+      Adicionar
+    </button>
+
+  </div>
+
+</article>

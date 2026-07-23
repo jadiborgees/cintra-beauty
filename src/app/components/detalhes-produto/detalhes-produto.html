@@ -1,0 +1,173 @@
+@if (produto(); as produto) {
+
+  <div
+    class="detalhes__overlay"
+    (click)="fechar()"
+  ></div>
+
+  <div class="detalhes">
+
+    <button
+      type="button"
+      class="detalhes__fechar"
+      aria-label="Fechar detalhes"
+      (click)="fechar()"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <div class="detalhes__imagem">
+      <img
+        [src]="produto.imagem"
+        [alt]="produto.nome"
+      >
+    </div>
+
+    <div class="detalhes__conteudo">
+
+      <span class="detalhes__marca">
+        {{ produto.marca }}
+      </span>
+
+      <h2>
+        {{ produto.nome }}
+      </h2>
+
+      <p class="detalhes__informacoes">
+        {{ produto.genero }}
+        ·
+        {{ produto.volume }}
+        ·
+        {{ produto.categoria }}
+      </p>
+
+      @if (produto.descricao) {
+        <p class="detalhes__descricao">
+          {{ produto.descricao }}
+        </p>
+      }
+
+      <div class="detalhes__caracteristicas">
+
+        <div>
+          <span>Família olfativa</span>
+
+          <strong>
+            {{ produto.familiaOlfativa }}
+          </strong>
+        </div>
+
+        <div>
+          <span>Intensidade</span>
+
+          <strong>
+            {{ produto.intensidade }}
+          </strong>
+        </div>
+
+        <div>
+          <span>Ocasião</span>
+
+          <strong>
+            {{ produto.ocasiao }}
+          </strong>
+        </div>
+
+      </div>
+
+      <strong class="detalhes__preco">
+        {{
+          produto.preco
+            | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+        }}
+      </strong>
+
+      <p class="detalhes__parcelamento">
+        ou 10x de
+        {{
+          produto.preco / 10
+            | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+        }}
+      </p>
+
+      <!-- QUANTIDADE -->
+      <div class="detalhes__quantidade-area">
+
+        <div>
+          <span class="detalhes__quantidade-titulo">
+            Quantidade
+          </span>
+
+          <span class="detalhes__estoque">
+            {{ produto.estoque }} unidades disponíveis
+          </span>
+        </div>
+
+        <div class="detalhes__quantidade">
+
+          <button
+            type="button"
+            aria-label="Diminuir quantidade"
+            [disabled]="quantidade() <= 1"
+            (click)="diminuirQuantidade()"
+          >
+            <i class="bi bi-dash"></i>
+          </button>
+
+          <span>
+            {{ quantidade() }}
+          </span>
+
+          <button
+            type="button"
+            aria-label="Aumentar quantidade"
+            [disabled]="quantidade() >= produto.estoque"
+            (click)="aumentarQuantidade()"
+          >
+            <i class="bi bi-plus"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="detalhes__acoes">
+
+        <button
+          type="button"
+          class="detalhes__favorito"
+          [attr.aria-label]="
+            estaFavoritado()
+              ? 'Remover dos favoritos'
+              : 'Adicionar aos favoritos'
+          "
+          (click)="alternarFavorito()"
+        >
+          <i
+            class="bi"
+            [class.bi-heart]="!estaFavoritado()"
+            [class.bi-heart-fill]="estaFavoritado()"
+          ></i>
+        </button>
+
+        <button
+          type="button"
+          class="detalhes__adicionar"
+          [disabled]="produto.estoque <= 0"
+          (click)="adicionarAoCarrinho()"
+        >
+          <i class="bi bi-bag"></i>
+
+          @if (produto.estoque > 0) {
+            Adicionar {{ quantidade() }} ao carrinho
+          } @else {
+            Produto indisponível
+          }
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+}

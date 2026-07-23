@@ -1,0 +1,132 @@
+.como-comprar {
+  padding: 80px 0;
+
+  background: var(--cor-off-white);
+}
+
+.como-comprar__cabecalho {
+  max-width: 620px;
+
+  margin: 0 auto 42px;
+
+  text-align: center;
+}
+
+.como-comprar__cabecalho > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--cor-dourado);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.como-comprar__cabecalho p {
+  margin-top: 10px;
+
+  color: var(--cor-cinza);
+
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.como-comprar__passos {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.como-comprar__passo {
+  position: relative;
+
+  min-height: 260px;
+
+  padding: 30px 24px;
+
+  border: 1px solid var(--cor-cinza-claro);
+
+  background: var(--cor-branco);
+
+  text-align: center;
+
+  transition:
+    transform var(--transicao),
+    border-color var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.como-comprar__passo:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--cor-dourado);
+
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.06);
+}
+
+.como-comprar__numero {
+  position: absolute;
+
+  top: 14px;
+  right: 16px;
+
+  color: rgba(0, 0, 0, 0.12);
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+}
+
+.como-comprar__icone {
+  width: 58px;
+  height: 58px;
+
+  margin: 12px auto 22px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--cor-dourado);
+  border-radius: 50%;
+
+  color: var(--cor-dourado);
+
+  font-size: 1.4rem;
+}
+
+.como-comprar__passo h3 {
+  margin-bottom: 10px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.como-comprar__passo p {
+  color: var(--cor-cinza);
+
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .como-comprar__passos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .como-comprar {
+    padding: 55px 0;
+  }
+
+  .como-comprar__passos {
+    grid-template-columns: 1fr;
+  }
+}

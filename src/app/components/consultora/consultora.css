@@ -1,0 +1,271 @@
+.consultora {
+  padding: 90px 0;
+
+  background: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+.consultora__cabecalho {
+  max-width: 650px;
+
+  margin: 0 auto 40px;
+
+  text-align: center;
+}
+
+.consultora__cabecalho > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--cor-dourado);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.consultora__cabecalho h2 {
+  color: var(--cor-branco);
+}
+
+.consultora__cabecalho p {
+  margin-top: 12px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.consultora__box {
+  position: relative;
+
+  max-width: 900px;
+  min-height: 360px;
+
+  margin: 0 auto;
+  padding: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: var(--cor-preto-suave);
+}
+
+.consultora__progresso {
+  width: 100%;
+  height: 3px;
+
+  margin-bottom: 16px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.consultora__progresso-barra {
+  height: 100%;
+
+  background: var(--cor-dourado);
+
+  transition: width 0.35s ease;
+}
+
+.consultora__etapa {
+  display: block;
+
+  margin-bottom: 34px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.consultora__pergunta h3 {
+  margin-bottom: 30px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 400;
+
+  text-align: center;
+}
+
+.consultora__opcoes {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.consultora__opcoes button {
+  min-height: 65px;
+
+  padding: 14px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: transparent;
+  color: var(--cor-branco);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  transition:
+    border-color var(--transicao),
+    background var(--transicao),
+    color var(--transicao),
+    transform var(--transicao);
+}
+
+.consultora__opcoes button:hover {
+  border-color: var(--cor-dourado);
+
+  background: var(--cor-dourado);
+  color: var(--cor-preto);
+
+  transform: translateY(-2px);
+}
+
+.consultora__voltar {
+  margin-top: 30px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  border: 0;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 0.75rem;
+}
+
+.consultora__voltar:hover {
+  color: var(--cor-dourado);
+}
+
+.consultora__resultado {
+  text-align: center;
+}
+
+.consultora__resultado-subtitulo {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--cor-dourado);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.consultora__resultado > h3 {
+  margin-bottom: 34px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.consultora__resultado-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  text-align: left;
+}
+
+.consultora__sem-resultado {
+  padding: 50px 20px;
+
+  text-align: center;
+}
+
+.consultora__sem-resultado i {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: var(--cor-dourado);
+
+  font-size: 2rem;
+}
+
+.consultora__sem-resultado h4 {
+  margin-bottom: 7px;
+
+  color: var(--cor-branco);
+}
+
+.consultora__sem-resultado p {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.85rem;
+}
+
+.consultora__reiniciar {
+  margin-top: 30px;
+  padding: 12px 22px;
+
+  border: 1px solid var(--cor-dourado);
+
+  background: transparent;
+  color: var(--cor-dourado);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  transition:
+    background var(--transicao),
+    color var(--transicao);
+}
+
+.consultora__reiniciar:hover {
+  background: var(--cor-dourado);
+  color: var(--cor-preto);
+}
+
+@media (max-width: 800px) {
+  .consultora {
+    padding: 65px 0;
+  }
+
+  .consultora__box {
+    padding: 28px 22px;
+  }
+
+  .consultora__opcoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .consultora__resultado-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .consultora__opcoes,
+  .consultora__resultado-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,174 @@
+.marcas {
+  padding: 65px 0;
+
+  overflow: hidden;
+
+  background: var(--cor-preto);
+}
+
+.marcas__cabecalho {
+  margin-bottom: 35px;
+
+  text-align: center;
+}
+
+.marcas__subtitulo {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--cor-dourado);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.marcas__cabecalho h2 {
+  color: var(--cor-branco);
+}
+
+/* Área visível do carrossel */
+
+.marcas__carrossel {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+/* Gradiente nas bordas */
+
+.marcas__carrossel::before,
+.marcas__carrossel::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  z-index: 2;
+
+  width: 120px;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.marcas__carrossel::before {
+  left: 0;
+
+  background: linear-gradient(
+    90deg,
+    var(--cor-preto),
+    transparent
+  );
+}
+
+.marcas__carrossel::after {
+  right: 0;
+
+  background: linear-gradient(
+    -90deg,
+    var(--cor-preto),
+    transparent
+  );
+}
+
+/* Faixa animada */
+
+.marcas__faixa {
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  animation: deslizar-marcas 28s linear infinite;
+}
+
+/* Pausa ao passar o mouse */
+
+.marcas__carrossel:hover .marcas__faixa {
+  animation-play-state: paused;
+}
+
+/* Cada marca */
+
+.marca {
+  min-width: 220px;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: var(--cor-preto-suave);
+  color: var(--cor-branco);
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  letter-spacing: 0.05em;
+
+  white-space: nowrap;
+
+  transition:
+    border-color var(--transicao),
+    color var(--transicao),
+    transform var(--transicao);
+}
+
+.marca:hover {
+  border-color: var(--cor-dourado);
+
+  color: var(--cor-dourado);
+
+  transform: translateY(-3px);
+}
+
+/* Animação infinita */
+
+@keyframes deslizar-marcas {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+@media (max-width: 768px) {
+  .marcas {
+    padding: 50px 0;
+  }
+
+  .marca {
+    min-width: 180px;
+    height: 78px;
+
+    padding: 18px 24px;
+
+    font-size: 0.9rem;
+  }
+
+  .marcas__faixa {
+    animation-duration: 22s;
+  }
+
+  .marcas__carrossel::before,
+  .marcas__carrossel::after {
+    width: 50px;
+  }
+}

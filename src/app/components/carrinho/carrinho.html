@@ -1,0 +1,372 @@
+@if (aberto()) {
+  <div
+    class="carrinho__overlay"
+    (click)="fechar()"
+  ></div>
+}
+
+<aside
+  class="carrinho"
+  [class.carrinho--aberto]="aberto()"
+>
+
+  <div class="carrinho__cabecalho">
+
+    <div>
+      <span class="carrinho__subtitulo">
+        Seu pedido
+      </span>
+
+      <h2>
+        Meu carrinho
+      </h2>
+    </div>
+
+    <button
+      type="button"
+      class="carrinho__fechar"
+      aria-label="Fechar carrinho"
+      (click)="fechar()"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+  </div>
+
+
+  <div class="carrinho__conteudo">
+
+    @if (itens().length === 0) {
+
+      <div class="carrinho__vazio">
+
+        <i class="bi bi-bag"></i>
+
+        <h3>
+          Seu carrinho está vazio
+        </h3>
+
+        <p>
+          Adicione seus perfumes favoritos
+          para continuar.
+        </p>
+
+      </div>
+
+    } @else {
+
+      <!-- PRODUTOS -->
+      <div class="carrinho__lista">
+
+        @for (
+          item of itens();
+          track item.produto.id
+        ) {
+
+          <article class="carrinho__item">
+
+            <div class="carrinho__item-imagem">
+
+              <img
+                [src]="item.produto.imagem"
+                [alt]="item.produto.nome"
+              >
+
+            </div>
+
+            <div class="carrinho__item-info">
+
+              <div class="carrinho__item-topo">
+
+                <div>
+
+                  <h3>
+                    {{ item.produto.nome }}
+                  </h3>
+
+                  <p>
+                    {{ item.produto.marca }}
+                    ·
+                    {{ item.produto.volume }}
+                  </p>
+
+                </div>
+
+                <button
+                  type="button"
+                  class="carrinho__remover"
+                  aria-label="Remover produto"
+                  (click)="remover(item.produto.id)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+
+              </div>
+
+              <strong class="carrinho__item-preco">
+                {{
+                  item.produto.preco
+                    | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+                }}
+              </strong>
+
+              <div class="carrinho__item-rodape">
+
+                <div class="carrinho__quantidade">
+
+                  <button
+                    type="button"
+                    aria-label="Diminuir quantidade"
+                    (click)="diminuir(item.produto.id)"
+                  >
+                    <i class="bi bi-dash"></i>
+                  </button>
+
+                  <span>
+                    {{ item.quantidade }}
+                  </span>
+
+                  <button
+                    type="button"
+                    aria-label="Aumentar quantidade"
+                    [disabled]="
+                      item.quantidade >= item.produto.estoque
+                    "
+                    (click)="aumentar(item.produto.id)"
+                  >
+                    <i class="bi bi-plus"></i>
+                  </button>
+
+                </div>
+
+                <strong>
+                  {{
+                    item.produto.preco * item.quantidade
+                      | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+                  }}
+                </strong>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+
+      <!-- DADOS DO CLIENTE -->
+      <div class="carrinho__cliente">
+
+        <h3>
+          Seus dados
+        </h3>
+
+        <label for="nomeCliente">
+          Seu nome
+        </label>
+
+        <input
+          id="nomeCliente"
+          type="text"
+          placeholder="Digite seu nome"
+          autocomplete="name"
+          [value]="nomeCliente()"
+          (input)="nomeCliente.set($any($event.target).value)"
+        >
+
+        @if (erroNome()) {
+
+          <p class="carrinho__cliente-erro">
+            {{ erroNome() }}
+          </p>
+
+        }
+
+      </div>
+
+
+      <!-- FRETE -->
+      <div class="carrinho__frete">
+
+        <h3>
+          Calcular frete
+        </h3>
+
+        <div class="carrinho__cep">
+
+          <input
+            type="text"
+            maxlength="9"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            placeholder="Digite seu CEP"
+            [value]="cep()"
+            (input)="cep.set($any($event.target).value)"
+          >
+
+          <button
+            type="button"
+            (click)="calcularFrete()"
+          >
+            Calcular
+          </button>
+
+        </div>
+
+        @if (erroCep()) {
+
+          <p class="carrinho__cep-erro">
+            {{ erroCep() }}
+          </p>
+
+        }
+
+        @if (opcoesFrete().length > 0) {
+
+          <div class="carrinho__fretes">
+
+            @for (
+              opcao of opcoesFrete();
+              track opcao.id
+            ) {
+
+              <label class="carrinho__frete-opcao">
+
+                <input
+                  type="radio"
+                  name="frete"
+                  [value]="opcao.id"
+                  [checked]="frete()?.id === opcao.id"
+                  (change)="selecionarFrete(opcao)"
+                >
+
+                <div>
+
+                  <strong>
+                    {{ opcao.nome }}
+                  </strong>
+
+                  <span>
+                    {{ opcao.prazo }}
+                  </span>
+
+                </div>
+
+                <strong>
+
+                  @if (opcao.valor === 0) {
+
+                    Grátis
+
+                  } @else {
+
+                    {{
+                      opcao.valor
+                        | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+                    }}
+
+                  }
+
+                </strong>
+
+              </label>
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+
+  <!-- RODAPÉ -->
+  <div class="carrinho__rodape">
+
+    <div class="carrinho__resumo">
+
+      <div>
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong>
+          {{
+            subtotal()
+              | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+          }}
+        </strong>
+
+      </div>
+
+      @if (frete()) {
+
+        <div>
+
+          <span>
+            Frete · {{ frete()!.nome }}
+          </span>
+
+          <strong>
+
+            @if (frete()!.valor === 0) {
+
+              Grátis
+
+            } @else {
+
+              {{
+                frete()!.valor
+                  | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+              }}
+
+            }
+
+          </strong>
+
+        </div>
+
+      }
+
+      <div class="carrinho__total">
+
+        <span>
+          Total
+        </span>
+
+        <strong>
+          {{
+            total()
+              | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+          }}
+        </strong>
+
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="carrinho__finalizar"
+      [disabled]="
+        itens().length === 0 ||
+        !frete()
+      "
+      (click)="finalizarPedido()"
+    >
+      <i class="bi bi-whatsapp"></i>
+
+      Finalizar pelo WhatsApp
+    </button>
+
+  </div>
+
+</aside>

@@ -1,0 +1,39 @@
+<section id="novidades" class="novidades">
+  <div class="container">
+
+    <div class="novidades__cabecalho">
+      <span class="novidades__subtitulo">
+        Acabaram de chegar
+      </span>
+
+      <h2 class="titulo-secao">
+        Novidades
+      </h2>
+
+      <p>
+        Conheça as fragrâncias mais recentes da nossa seleção.
+      </p>
+    </div>
+
+    @if (produtos.length > 0) {
+
+      <div class="novidades__grid">
+
+        @for (produto of produtos; track produto.id) {
+          <app-card-produto
+            [produto]="produto"
+          />
+        }
+
+      </div>
+
+    } @else {
+
+      <div class="novidades__vazio">
+        Novos perfumes serão adicionados em breve.
+      </div>
+
+    }
+
+  </div>
+</section>

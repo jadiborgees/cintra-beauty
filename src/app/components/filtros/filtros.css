@@ -1,0 +1,150 @@
+.filtros {
+  width: 100%;
+  padding-right: 24px;
+
+  border-right: 1px solid var(--cor-cinza-claro);
+}
+
+.filtros__titulo {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 24px;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.filtros__grupo {
+  padding: 20px 0;
+
+  border-bottom: 1px solid var(--cor-cinza-claro);
+}
+
+.filtros__grupo:first-of-type {
+  padding-top: 0;
+}
+
+.filtros__grupo h3,
+.filtros__grupo > label:first-child {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.filtros__busca {
+  position: relative;
+}
+
+.filtros__busca input {
+  width: 100%;
+
+  padding: 11px 38px 11px 12px;
+
+  border: 1px solid var(--cor-cinza-claro);
+
+  outline: none;
+}
+
+.filtros__busca input:focus {
+  border-color: var(--cor-dourado);
+}
+
+.filtros__busca i {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+}
+
+.filtros__opcao {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 9px;
+
+  color: var(--cor-cinza);
+
+  font-size: 0.82rem;
+
+  cursor: pointer;
+}
+
+.filtros__grupo select {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--cor-cinza-claro);
+  background: var(--cor-branco);
+
+  outline: none;
+}
+
+.filtros__range {
+  width: 100%;
+
+  accent-color: var(--cor-dourado);
+}
+
+.filtros__preco {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 8px;
+
+  font-size: 0.72rem;
+}
+
+.filtros__preco span {
+  color: var(--cor-cinza);
+}
+
+.filtros__limpar {
+  width: 100%;
+
+  margin-top: 20px;
+  padding: 11px;
+
+  border: 1px solid var(--cor-cinza-claro);
+
+  background: transparent;
+  color: var(--cor-preto);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  transition:
+    background var(--transicao),
+    color var(--transicao);
+}
+
+.filtros__limpar:hover {
+  background: var(--cor-preto);
+  color: var(--cor-branco);
+}
+
+@media (max-width: 900px) {
+  .filtros {
+    padding-right: 0;
+
+    border-right: 0;
+  }
+}

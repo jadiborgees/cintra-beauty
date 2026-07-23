@@ -1,0 +1,28 @@
+<section
+  id="mais-vendidos"
+  class="mais-vendidos"
+>
+  <div class="container">
+
+    <div class="mais-vendidos__cabecalho">
+      <span>Os queridinhos</span>
+
+      <h2 class="titulo-secao">
+        Mais vendidos
+      </h2>
+
+      <p>
+        Perfumes que conquistaram nossos clientes.
+      </p>
+    </div>
+
+    <div class="mais-vendidos__grid">
+      @for (produto of produtos; track produto.id) {
+        <app-card-produto
+          [produto]="produto"
+        />
+      }
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,280 @@
+<section
+  id="consultora"
+  class="consultora"
+>
+  <div class="container">
+
+    <div class="consultora__cabecalho">
+      <span>
+        Encontre sua fragrância
+      </span>
+
+      <h2 class="titulo-secao">
+        Consultora Virtual
+      </h2>
+
+      <p>
+        Responda algumas perguntas e descubra quais perfumes
+        combinam mais com você.
+      </p>
+    </div>
+
+    <div class="consultora__box">
+
+      @if (etapa() < 6) {
+        <div class="consultora__progresso">
+          <div
+            class="consultora__progresso-barra"
+            [style.width.%]="etapa() * 20"
+          ></div>
+        </div>
+
+        <span class="consultora__etapa">
+          Etapa {{ etapa() }} de 5
+        </span>
+      }
+
+      @switch (etapa()) {
+
+        @case (1) {
+          <div class="consultora__pergunta">
+            <h3>Para quem é o perfume?</h3>
+
+            <div class="consultora__opcoes">
+              <button
+                type="button"
+                (click)="selecionarGenero('Masculino')"
+              >
+                Masculino
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarGenero('Feminino')"
+              >
+                Feminino
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarGenero('Unissex')"
+              >
+                Unissex
+              </button>
+            </div>
+          </div>
+        }
+
+        @case (2) {
+          <div class="consultora__pergunta">
+            <h3>Qual estilo de fragrância você prefere?</h3>
+
+            <div class="consultora__opcoes">
+              <button
+                type="button"
+                (click)="selecionarFamilia('Amadeirado')"
+              >
+                Amadeirado
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarFamilia('Doce')"
+              >
+                Doce
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarFamilia('Floral')"
+              >
+                Floral
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarFamilia('Cítrico')"
+              >
+                Cítrico
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarFamilia('Aromático')"
+              >
+                Aromático
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarFamilia('Fresco')"
+              >
+                Fresco
+              </button>
+            </div>
+          </div>
+        }
+
+        @case (3) {
+          <div class="consultora__pergunta">
+            <h3>Qual intensidade você prefere?</h3>
+
+            <div class="consultora__opcoes">
+              <button
+                type="button"
+                (click)="selecionarIntensidade('Suave')"
+              >
+                Suave
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarIntensidade('Moderado')"
+              >
+                Moderado
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarIntensidade('Forte')"
+              >
+                Forte
+              </button>
+            </div>
+          </div>
+        }
+
+        @case (4) {
+          <div class="consultora__pergunta">
+            <h3>Quando pretende usar?</h3>
+
+            <div class="consultora__opcoes">
+              <button
+                type="button"
+                (click)="selecionarOcasiao('Dia')"
+              >
+                Dia
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarOcasiao('Noite')"
+              >
+                Noite
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarOcasiao('Ambos')"
+              >
+                Dia e noite
+              </button>
+            </div>
+          </div>
+        }
+
+        @case (5) {
+          <div class="consultora__pergunta">
+            <h3>Quanto pretende gastar?</h3>
+
+            <div class="consultora__opcoes">
+              <button
+                type="button"
+                (click)="selecionarPreco(500)"
+              >
+                Até R$ 500
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarPreco(700)"
+              >
+                Até R$ 700
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarPreco(1000)"
+              >
+                Até R$ 1.000
+              </button>
+
+              <button
+                type="button"
+                (click)="selecionarPreco(2500)"
+              >
+                Sem limite
+              </button>
+            </div>
+          </div>
+        }
+
+        @case (6) {
+          <div class="consultora__resultado">
+
+            <span class="consultora__resultado-subtitulo">
+              Sua seleção
+            </span>
+
+            <h3>
+              Perfumes recomendados para você
+            </h3>
+
+            @if (resultado().length > 0) {
+
+              <div class="consultora__resultado-grid">
+                @for (
+                  produto of resultado();
+                  track produto.id
+                ) {
+                  <app-card-produto
+                    [produto]="produto"
+                  />
+                }
+              </div>
+
+            } @else {
+
+              <div class="consultora__sem-resultado">
+                <i class="bi bi-stars"></i>
+
+                <h4>
+                  Não encontramos uma combinação exata
+                </h4>
+
+                <p>
+                  Tente alterar algumas preferências para
+                  encontrar mais opções.
+                </p>
+              </div>
+
+            }
+
+            <button
+              type="button"
+              class="consultora__reiniciar"
+              (click)="reiniciar()"
+            >
+              Refazer consultoria
+            </button>
+
+          </div>
+        }
+
+      }
+
+      @if (etapa() > 1 && etapa() < 6) {
+        <button
+          type="button"
+          class="consultora__voltar"
+          (click)="voltar()"
+        >
+          <i class="bi bi-arrow-left"></i>
+          Voltar
+        </button>
+      }
+
+    </div>
+
+  </div>
+</section>

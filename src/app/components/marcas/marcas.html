@@ -1,0 +1,36 @@
+<section id="marcas" class="marcas">
+  <div class="container">
+
+    <div class="marcas__cabecalho">
+      <span class="marcas__subtitulo">
+        Seleção premium
+      </span>
+
+      <h2 class="titulo-secao">
+        Grandes marcas
+      </h2>
+    </div>
+
+  </div>
+
+  <div class="marcas__carrossel">
+
+    <div class="marcas__faixa">
+
+      @for (marca of marcas; track $index) {
+        <div class="marca">
+          {{ marca }}
+        </div>
+      }
+
+      <!-- Repetimos para criar o efeito infinito -->
+      @for (marca of marcas; track $index) {
+        <div class="marca">
+          {{ marca }}
+        </div>
+      }
+
+    </div>
+
+  </div>
+</section>

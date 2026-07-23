@@ -1,0 +1,147 @@
+<header class="header">
+
+  @if (menuAberto()) {
+    <div
+      class="header__menu-overlay"
+      (click)="fecharMenu()"
+    ></div>
+  }
+
+  <div class="container header__content">
+
+    <!-- LOGO -->
+    <a
+      href="#inicio"
+      class="header__logo"
+      (click)="fecharMenu()"
+    >
+      <span class="header__logo-main">
+        CINTRA
+      </span>
+
+      <span class="header__logo-sub">
+        BEAUTY
+      </span>
+    </a>
+
+    <!-- MENU DESKTOP / MOBILE -->
+    <nav
+      class="header__nav"
+      [class.header__nav--aberto]="menuAberto()"
+    >
+      <a
+        href="#inicio"
+        (click)="fecharMenu()"
+      >
+        Início
+      </a>
+
+      <a
+        href="#catalogo"
+        (click)="fecharMenu()"
+      >
+        Catálogo
+      </a>
+
+      <a
+        href="#marcas"
+        (click)="fecharMenu()"
+      >
+        Marcas
+      </a>
+
+      <a
+        href="#consultora"
+        (click)="fecharMenu()"
+      >
+        Consultora
+      </a>
+
+      <a
+        href="#mais-vendidos"
+        (click)="fecharMenu()"
+      >
+        Mais vendidos
+      </a>
+
+      <a
+        href="#novidades"
+        (click)="fecharMenu()"
+      >
+        Novidades
+      </a>
+
+      <a
+        href="#como-comprar"
+        (click)="fecharMenu()"
+      >
+        Como comprar
+      </a>
+
+      <a
+        href="#contato"
+        (click)="fecharMenu()"
+      >
+        Contato
+      </a>
+    </nav>
+
+    <!-- AÇÕES -->
+    <div class="header__actions">
+
+      <!-- FAVORITOS -->
+      <a
+        routerLink="/favoritos"
+        class="header__icon-button header__favorites"
+        aria-label="Abrir favoritos"
+        (click)="fecharMenu()"
+      >
+        <i class="bi bi-heart"></i>
+
+        @if (quantidadeFavoritos() > 0) {
+          <span class="header__favorites-count">
+            {{ quantidadeFavoritos() }}
+          </span>
+        }
+      </a>
+
+      <!-- CARRINHO -->
+      <button
+        type="button"
+        class="header__icon-button header__cart"
+        aria-label="Abrir carrinho"
+        (click)="fecharMenu(); abrirCarrinho()"
+      >
+        <i class="bi bi-bag"></i>
+
+        @if (quantidadeCarrinho() > 0) {
+          <span class="header__cart-count">
+            {{ quantidadeCarrinho() }}
+          </span>
+        }
+      </button>
+
+      <!-- MENU MOBILE -->
+      <button
+        type="button"
+        class="header__icon-button header__menu-button"
+        [attr.aria-label]="
+          menuAberto()
+            ? 'Fechar menu'
+            : 'Abrir menu'
+        "
+        [attr.aria-expanded]="menuAberto()"
+        (click)="alternarMenu()"
+      >
+        <i
+          class="bi"
+          [class.bi-list]="!menuAberto()"
+          [class.bi-x-lg]="menuAberto()"
+        ></i>
+      </button>
+
+    </div>
+
+  </div>
+
+</header>

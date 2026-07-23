@@ -1,0 +1,188 @@
+.hero {
+  position: relative;
+
+  min-height: 560px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.72) 42%,
+      rgba(0, 0, 0, 0.18) 100%
+    ),
+    url('/hero-perfume.png') center / cover no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+}
+
+.hero__content {
+  position: relative;
+
+  z-index: 2;
+}
+
+.hero__text {
+  max-width: 600px;
+
+  color: var(--cor-branco);
+}
+
+.hero__eyebrow {
+  display: block;
+
+  margin-bottom: 16px;
+
+  color: var(--cor-dourado);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 550px;
+
+  margin-bottom: 20px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--cor-dourado);
+}
+
+.hero p {
+  max-width: 480px;
+
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.hero__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  color: var(--cor-branco);
+  background: transparent;
+}
+
+.hero__whatsapp:hover {
+  color: var(--cor-preto);
+  background: var(--cor-branco);
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 620px;
+
+    background-position: 65% center;
+  }
+
+  .hero::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .hero__text {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+
+    max-width: 280px;
+  }
+
+  .hero__actions .botao {
+    text-align: center;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: 620px;
+
+    background-position: 68% center;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+
+    line-height: 1;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .hero__actions {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__actions .botao {
+    width: 100%;
+  }
+}

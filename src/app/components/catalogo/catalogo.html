@@ -1,0 +1,71 @@
+<section class="catalogo">
+  <div class="container">
+
+    <div class="catalogo__layout">
+
+      <div class="catalogo__filtros">
+        <app-filtros
+          (filtrosAlterados)="atualizarFiltros($event)"
+        />
+      </div>
+
+      <div class="catalogo__conteudo">
+
+        <div class="catalogo__cabecalho">
+          <div>
+            <span class="catalogo__subtitulo">
+              Seleção especial
+            </span>
+
+            <h2 class="titulo-secao">
+              Catálogo de perfumes
+            </h2>
+
+            <p class="catalogo__quantidade">
+              {{ produtosFiltrados().length }}
+              produtos encontrados
+            </p>
+          </div>
+
+          <select class="catalogo__ordenacao">
+            <option>Ordenar por relevância</option>
+            <option>Menor preço</option>
+            <option>Maior preço</option>
+            <option>Mais vendidos</option>
+            <option>Novidades</option>
+          </select>
+        </div>
+
+        @if (produtosFiltrados().length > 0) {
+
+          <div class="catalogo__grid">
+            @for (
+              produto of produtosFiltrados();
+              track produto.id
+            ) {
+              <app-card-produto
+                [produto]="produto"
+              />
+            }
+          </div>
+
+        } @else {
+
+          <div class="catalogo__vazio">
+            <i class="bi bi-search"></i>
+
+            <h3>Nenhum perfume encontrado</h3>
+
+            <p>
+              Tente alterar os filtros para encontrar outros produtos.
+            </p>
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,114 @@
+<aside class="filtros">
+  <div class="filtros__titulo">
+    <i class="bi bi-sliders"></i>
+    <span>Filtros</span>
+  </div>
+
+  <div class="filtros__grupo">
+    <label for="busca">Buscar perfume</label>
+
+    <div class="filtros__busca">
+      <input
+        id="busca"
+        type="text"
+        placeholder="Buscar perfume..."
+        [ngModel]="busca()"
+        (ngModelChange)="busca.set($event); atualizarFiltros()"
+      >
+
+      <i class="bi bi-search"></i>
+    </div>
+  </div>
+
+  <div class="filtros__grupo">
+    <h3>Gênero</h3>
+
+    <label class="filtros__opcao">
+      <input
+        type="radio"
+        name="genero"
+        value=""
+        [ngModel]="genero()"
+        (ngModelChange)="genero.set($event); atualizarFiltros()"
+      >
+      Todos
+    </label>
+
+    <label class="filtros__opcao">
+      <input
+        type="radio"
+        name="genero"
+        value="Masculino"
+        [ngModel]="genero()"
+        (ngModelChange)="genero.set($event); atualizarFiltros()"
+      >
+      Masculino
+    </label>
+
+    <label class="filtros__opcao">
+      <input
+        type="radio"
+        name="genero"
+        value="Feminino"
+        [ngModel]="genero()"
+        (ngModelChange)="genero.set($event); atualizarFiltros()"
+      >
+      Feminino
+    </label>
+
+    <label class="filtros__opcao">
+      <input
+        type="radio"
+        name="genero"
+        value="Unissex"
+        [ngModel]="genero()"
+        (ngModelChange)="genero.set($event); atualizarFiltros()"
+      >
+      Unissex
+    </label>
+  </div>
+
+  <div class="filtros__grupo">
+    <h3>Marca</h3>
+
+    <select
+      [ngModel]="marca()"
+      (ngModelChange)="marca.set($event); atualizarFiltros()"
+    >
+      <option value="">Todas as marcas</option>
+
+      @for (item of marcas; track item) {
+        <option [value]="item">
+          {{ item }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div class="filtros__grupo">
+    <h3>Faixa de preço</h3>
+
+    <input
+      class="filtros__range"
+      type="range"
+      min="100"
+      max="2500"
+      step="50"
+      [ngModel]="precoMaximo()"
+      (ngModelChange)="precoMaximo.set(+$event); atualizarFiltros()"
+    >
+
+    <div class="filtros__preco">
+      <span>R$ 100</span>
+      <strong>Até R$ {{ precoMaximo() }}</strong>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="filtros__limpar"
+    (click)="limparFiltros()"
+  >
+    Limpar filtros
+  </button>
+</aside>

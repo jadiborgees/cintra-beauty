@@ -1,0 +1,55 @@
+<section class="favoritos">
+  <div class="container">
+
+    <div class="favoritos__cabecalho">
+      <span class="favoritos__subtitulo">
+        Sua seleção
+      </span>
+
+      <h1 class="titulo-secao">
+        Favoritos
+      </h1>
+
+      <p>
+        Perfumes que você salvou para ver depois.
+      </p>
+    </div>
+
+    @if (favoritos().length > 0) {
+
+      <div class="favoritos__grid">
+        @for (
+          produto of favoritos();
+          track produto.id
+        ) {
+          <app-card-produto
+            [produto]="produto"
+          />
+        }
+      </div>
+
+    } @else {
+
+      <div class="favoritos__vazio">
+        <i class="bi bi-heart"></i>
+
+        <h2>
+          Nenhum favorito ainda
+        </h2>
+
+        <p>
+          Clique no coração dos perfumes que você mais gostar.
+        </p>
+
+        <a
+          routerLink="/"
+          class="botao botao-dourado"
+        >
+          Ver perfumes
+        </a>
+      </div>
+
+    }
+
+  </div>
+</section>
