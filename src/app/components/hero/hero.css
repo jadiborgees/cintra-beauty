@@ -120,9 +120,9 @@
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 620px;
+    min-height: 600px;
 
-    background-position: 65% center;
+    background-position: 63% center;
   }
 
   .hero::before {
@@ -131,7 +131,7 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.32);
   }
 
   .hero__text {
@@ -139,17 +139,23 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size: clamp(2.5rem, 9vw, 3.8rem);
+  }
+
+  .hero p {
+    max-width: 420px;
   }
 
   .hero__actions {
     align-items: stretch;
     flex-direction: column;
 
-    max-width: 280px;
+    max-width: 300px;
   }
 
   .hero__actions .botao {
+    width: 100%;
+
     text-align: center;
   }
 }
@@ -158,31 +164,125 @@
 
 @media (max-width: 520px) {
   .hero {
-    min-height: 620px;
+    min-height: 560px;
 
-    background-position: 68% center;
+    align-items: flex-end;
+
+    padding-top: 24px;
+    padding-bottom: 32px;
+
+    background-position: 62% center;
+  }
+
+  .hero::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 38%,
+        rgba(0, 0, 0, 0.82) 100%
+      );
+  }
+
+  .hero__overlay {
+    background:
+      radial-gradient(
+        circle at 65% 28%,
+        transparent 0%,
+        rgba(0, 0, 0, 0.06) 40%,
+        rgba(0, 0, 0, 0.3) 100%
+      );
+  }
+
+  .hero__content {
+    width: 100%;
+  }
+
+  .hero__text {
+    max-width: 100%;
   }
 
   .hero__eyebrow {
-    font-size: 0.68rem;
+    margin-bottom: 10px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.16em;
   }
 
   .hero h1 {
-    font-size: clamp(2.3rem, 11vw, 3.2rem);
+    max-width: 330px;
 
-    line-height: 1;
+    margin-bottom: 14px;
+
+    font-size: 2.45rem;
+
+    line-height: 0.98;
+  }
+
+  .hero h1 span {
+    margin-top: 5px;
   }
 
   .hero p {
-    font-size: 0.9rem;
+    max-width: 330px;
+
+    margin-bottom: 20px;
+
+    font-size: 0.82rem;
+    line-height: 1.55;
   }
 
   .hero__actions {
     width: 100%;
-    max-width: 100%;
+    max-width: 330px;
+
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 10px;
   }
 
   .hero__actions .botao {
     width: 100%;
+
+    min-height: 44px;
+
+    font-size: 0.72rem;
+
+    text-align: center;
+  }
+}
+
+/* CELULAR PEQUENO */
+
+@media (max-width: 380px) {
+  .hero {
+    min-height: 540px;
+
+    padding-bottom: 26px;
+
+    background-position: 64% center;
+  }
+
+  .hero h1 {
+    max-width: 290px;
+
+    font-size: 2.15rem;
+  }
+
+  .hero p {
+    max-width: 290px;
+
+    font-size: 0.78rem;
+  }
+
+  .hero__actions {
+    max-width: 290px;
   }
 }
