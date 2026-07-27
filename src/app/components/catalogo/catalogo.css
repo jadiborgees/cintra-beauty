@@ -4,6 +4,10 @@
   background: var(--cor-branco);
 }
 
+/* ========================================
+   LAYOUT
+======================================== */
+
 .catalogo__layout {
   display: grid;
 
@@ -15,6 +19,10 @@
 .catalogo__conteudo {
   min-width: 0;
 }
+
+/* ========================================
+   CABEÇALHO
+======================================== */
 
 .catalogo__cabecalho {
   margin-bottom: 32px;
@@ -37,6 +45,7 @@
   font-weight: 700;
 
   letter-spacing: 0.18em;
+
   text-transform: uppercase;
 }
 
@@ -48,12 +57,17 @@
   font-size: 0.78rem;
 }
 
+/* ========================================
+   ORDENAÇÃO
+======================================== */
+
 .catalogo__ordenacao {
   min-width: 210px;
 
   padding: 11px 14px;
 
   border: 1px solid var(--cor-cinza-claro);
+
   background: var(--cor-branco);
 
   color: var(--cor-texto);
@@ -71,6 +85,10 @@
   border-color: var(--cor-dourado);
 }
 
+/* ========================================
+   GRID
+======================================== */
+
 .catalogo__grid {
   display: grid;
 
@@ -78,6 +96,10 @@
 
   gap: 20px;
 }
+
+/* ========================================
+   VAZIO
+======================================== */
 
 .catalogo__vazio {
   min-height: 350px;
@@ -117,9 +139,12 @@
   line-height: 1.6;
 }
 
-/* Notebook / telas menores */
+/* ========================================
+   NOTEBOOK
+======================================== */
 
 @media (max-width: 1100px) {
+
   .catalogo__layout {
     grid-template-columns: 210px minmax(0, 1fr);
 
@@ -131,15 +156,20 @@
   }
 }
 
-/* Tablet */
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 900px) {
+
   .catalogo {
     padding: 55px 0 65px;
   }
 
   .catalogo__layout {
     grid-template-columns: 1fr;
+
+    gap: 28px;
   }
 
   .catalogo__cabecalho {
@@ -157,26 +187,89 @@
   }
 }
 
-/* Celular */
+/* ========================================
+   CELULAR
+======================================== */
 
 @media (max-width: 600px) {
+
   .catalogo {
-    padding: 45px 0 55px;
+    padding: 40px 0 50px;
   }
+
+  /*
+    Permite colocar o cabeçalho antes dos filtros
+    sem alterar o HTML.
+  */
+  .catalogo__conteudo {
+    display: contents;
+  }
+
+  .catalogo__layout {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  /* 1º - TÍTULO + ORDENAÇÃO */
 
   .catalogo__cabecalho {
-    margin-bottom: 24px;
+    order: 1;
 
-    gap: 18px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 16px;
   }
 
+  .catalogo__subtitulo {
+    margin-bottom: 6px;
+
+    font-size: 0.64rem;
+  }
+
+  .catalogo__quantidade {
+    margin-top: 6px;
+
+    font-size: 0.74rem;
+  }
+
+  .catalogo__ordenacao {
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    font-size: 0.75rem;
+  }
+
+  /* 2º - FILTROS */
+
+  .catalogo__filtros {
+    order: 2;
+
+    margin-bottom: 26px;
+  }
+
+  /* 3º - PRODUTOS */
+
   .catalogo__grid {
+    order: 3;
+
     grid-template-columns: 1fr;
 
     gap: 16px;
   }
 
   .catalogo__vazio {
+    order: 3;
+
     min-height: 280px;
   }
 }

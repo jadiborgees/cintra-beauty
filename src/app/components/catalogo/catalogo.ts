@@ -28,10 +28,13 @@ export class Catalogo {
     destaque: ''
   });
 
+  readonly ordenacao = signal('relevancia');
+
   readonly produtosFiltrados = computed(() => {
     const filtros = this.filtros();
+    const ordenacao = this.ordenacao();
 
-    return this.produtoService.produtos().filter(produto => {
+    const produtos = this.produtoService.produtos().filter(produto => {
       const busca = filtros.busca
         .trim()
         .toLowerCase();
@@ -71,9 +74,42 @@ export class Catalogo {
         correspondeDestaque
       );
     });
+
+    switch (ordenacao) {
+      case 'menor-preco':
+        return [...produtos].sort(
+          (a, b) => a.preco - b.preco
+        );
+
+      case 'maior-preco':
+        return [...produtos].sort(
+          (a, b) => b.preco - a.preco
+        );
+
+      case 'mais-vendidos':
+        return [...produtos].sort(
+          (a, b) =>
+            Number(Boolean(b.maisVendido)) -
+            Number(Boolean(a.maisVendido))
+        );
+
+      case 'novidades':
+        return [...produtos].sort(
+          (a, b) =>
+            Number(Boolean(b.novidade)) -
+            Number(Boolean(a.novidade))
+        );
+
+      default:
+        return produtos;
+    }
   });
 
   atualizarFiltros(filtros: FiltrosCatalogo): void {
     this.filtros.set(filtros);
+  }
+
+  atualizarOrdenacao(valor: string): void {
+    this.ordenacao.set(valor);
   }
 }

@@ -1,5 +1,6 @@
 .filtros {
   width: 100%;
+
   padding-right: 24px;
 
   border-right: 1px solid var(--cor-cinza-claro);
@@ -89,6 +90,7 @@
   padding: 10px 12px;
 
   border: 1px solid var(--cor-cinza-claro);
+
   background: var(--cor-branco);
 
   outline: none;
@@ -119,6 +121,7 @@
   width: 100%;
 
   margin-top: 20px;
+
   padding: 11px;
 
   border: 1px solid var(--cor-cinza-claro);
@@ -138,13 +141,134 @@
 
 .filtros__limpar:hover {
   background: var(--cor-preto);
+
   color: var(--cor-branco);
 }
 
+
+/* ========================================
+   TABLET
+======================================== */
+
 @media (max-width: 900px) {
+
   .filtros {
     padding-right: 0;
 
     border-right: 0;
   }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .filtros {
+    padding: 14px;
+
+    border: 1px solid var(--cor-cinza-claro);
+
+    background: var(--cor-branco);
+  }
+
+  /* TÍTULO */
+
+  .filtros__titulo {
+    gap: 6px;
+
+    margin-bottom: 10px;
+
+    font-size: 0.68rem;
+  }
+
+  /* GRUPOS */
+
+  .filtros__grupo {
+    padding: 12px 0;
+  }
+
+  .filtros__grupo:first-of-type {
+    padding-top: 0;
+  }
+
+  .filtros__grupo h3,
+  .filtros__grupo > label:first-child {
+    margin-bottom: 8px;
+
+    font-size: 0.65rem;
+  }
+
+  /* BUSCA */
+
+  .filtros__busca input {
+    min-height: 38px;
+
+    padding:
+      8px
+      34px
+      8px
+      10px;
+
+    font-size: 0.75rem;
+  }
+
+  .filtros__busca i {
+    right: 10px;
+
+    font-size: 0.85rem;
+  }
+
+  /* OPÇÕES */
+
+  .filtros__opcao {
+    gap: 6px;
+
+    margin-top: 6px;
+
+    font-size: 0.74rem;
+  }
+
+  .filtros__opcao input {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* SELECT */
+
+  .filtros__grupo select {
+    min-height: 38px;
+
+    padding: 8px 10px;
+
+    font-size: 0.75rem;
+  }
+
+  /* RANGE */
+
+  .filtros__range {
+    margin-top: 2px;
+  }
+
+  .filtros__preco {
+    margin-top: 5px;
+
+    font-size: 0.66rem;
+  }
+
+  /* LIMPAR */
+
+  .filtros__limpar {
+    min-height: 38px;
+
+    margin-top: 12px;
+
+    padding: 8px;
+
+    font-size: 0.65rem;
+  }
+
 }

@@ -27,12 +27,30 @@
             </p>
           </div>
 
-          <select class="catalogo__ordenacao">
-            <option>Ordenar por relevância</option>
-            <option>Menor preço</option>
-            <option>Maior preço</option>
-            <option>Mais vendidos</option>
-            <option>Novidades</option>
+          <select
+            class="catalogo__ordenacao"
+            [value]="ordenacao()"
+            (change)="atualizarOrdenacao($any($event.target).value)"
+          >
+            <option value="relevancia">
+              Ordenar por relevância
+            </option>
+
+            <option value="menor-preco">
+              Menor preço
+            </option>
+
+            <option value="maior-preco">
+              Maior preço
+            </option>
+
+            <option value="mais-vendidos">
+              Mais vendidos
+            </option>
+
+            <option value="novidades">
+              Novidades
+            </option>
           </select>
         </div>
 
@@ -54,7 +72,9 @@
           <div class="catalogo__vazio">
             <i class="bi bi-search"></i>
 
-            <h3>Nenhum perfume encontrado</h3>
+            <h3>
+              Nenhum perfume encontrado
+            </h3>
 
             <p>
               Tente alterar os filtros para encontrar outros produtos.
