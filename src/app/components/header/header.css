@@ -247,216 +247,103 @@
 
 /* NOTEBOOK */
 
-@media (max-width: 1100px) {
-  .header__content {
-    gap: 20px;
-  }
-
-  .header__logo {
-    gap: 7px;
-  }
-
-  .header__logo-imagem {
-    width: 46px;
-    height: 46px;
-  }
-
-  .header__logo-main {
-    font-size: 1.05rem;
-  }
-
-  .header__logo-sub {
-    color: var(--cor-dourado);
-
-    font-size: 0.4rem;
-  }
-
-  .header__nav {
-    gap: 15px;
-  }
-
-  .header__nav a {
-    font-size: 0.64rem;
-  }
-}
-
-/* TABLET / MOBILE */
-
-@media (max-width: 900px) {
-  .header__content {
-    min-height: 78px;
-
-    gap: 12px;
-  }
-
-  .header__logo {
-    min-width: auto;
-
-    gap: 7px;
-  }
-
-  .header__logo-imagem {
-    width: 46px;
-    height: 46px;
-  }
-
-  .header__logo-main {
-    font-size: 1.05rem;
-  }
-
-  .header__logo-sub {
-    color: var(--cor-dourado);
-
-    font-size: 0.4rem;
-
-    letter-spacing: 0.3em;
-  }
-
-  .header__menu-overlay {
-    position: fixed;
-
-    top: 78px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    z-index: 1;
-
-    display: block;
-
-    background: rgba(0, 0, 0, 0.35);
-
-    backdrop-filter: blur(2px);
-  }
-
-  .header__nav {
-    position: absolute;
-
-    top: 100%;
-    left: 0;
-
-    z-index: 4;
-
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    gap: 0;
-
-    padding: 0;
-
-    background: var(--cor-branco);
-
-    border-top: 1px solid var(--cor-cinza-claro);
-    border-bottom: 1px solid var(--cor-cinza-claro);
-
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-10px);
-
-    pointer-events: none;
-
-    transition:
-      opacity var(--transicao),
-      transform var(--transicao),
-      visibility var(--transicao);
-  }
-
-  .header__nav--aberto {
-    opacity: 1;
-    visibility: visible;
-
-    transform: translateY(0);
-
-    pointer-events: auto;
-  }
-
-  .header__nav a {
-    width: 100%;
-
-    padding: 16px 24px;
-
-    border-bottom: 1px solid var(--cor-cinza-claro);
-
-    color: var(--cor-preto);
-
-    font-size: 0.72rem;
-
-    text-align: left;
-  }
-
-  .header__nav a:last-child {
-    border-bottom: 0;
-  }
-
-  .header__nav a::after {
-    display: none;
-  }
-
-  .header__nav a:hover {
-    background: var(--cor-off-white);
-
-    color: var(--cor-dourado);
-  }
-
-  .header__menu-button {
-    display: grid;
-  }
-}
-
 /* CELULAR */
 
 @media (max-width: 520px) {
   .header__content {
-    min-height: 72px;
-
-    gap: 5px;
+    min-height: 78px;
+    gap: 2px;
   }
 
+  /* LOGO COMPLETA */
   .header__logo {
-    gap: 5px;
+    gap: 7px;
+    flex-shrink: 1;
+    min-width: 0;
   }
 
+  /* SÍMBOLO EC */
   .header__logo-imagem {
-    width: 38px;
-    height: 38px;
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
   }
 
+  /* ELEGANCE + CINTRA */
+  .header__logo-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    line-height: 1;
+
+    flex-shrink: 0;
+  }
+
+  /* ELEGANCE */
   .header__logo-main {
-    font-size: 0.9rem;
+    font-size: 1.45rem;
+    font-weight: 400;
 
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
   }
 
+  /* CINTRA */
   .header__logo-sub {
-    margin-top: 3px;
+    margin-top: 5px;
 
     color: var(--cor-dourado);
 
-    font-size: 0.34rem;
+    font-size: 0.7rem;
     font-weight: 700;
 
-    letter-spacing: 0.25em;
+    letter-spacing: 0.22em;
+
+    white-space: nowrap;
   }
 
+  /* ÍCONES DO LADO DIREITO */
   .header__actions {
-    gap: 1px;
+    gap: 0;
+
+    flex-shrink: 0;
   }
 
   .header__icon-button {
-    width: 36px;
+    width: 32px;
     height: 36px;
 
-    font-size: 1.1rem;
+    padding: 0;
+
+    font-size: 1.05rem;
+  }
+
+  /* CONTADORES */
+  .header__favorites-count,
+  .header__cart-count {
+    top: 0;
+    right: -1px;
+
+    min-width: 15px;
+    height: 15px;
+
+    padding: 0 3px;
+
+    font-size: 0.55rem;
+  }
+
+  /* MENU MOBILE */
+  .header__menu-button {
+    display: grid;
   }
 
   .header__menu-overlay {
-    top: 72px;
+    top: 78px;
   }
 
   .header__nav a {
