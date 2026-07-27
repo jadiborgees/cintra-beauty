@@ -3,16 +3,25 @@
 
     <div class="catalogo__layout">
 
-      <div class="catalogo__filtros">
+      <!-- FILTROS -->
+      <div
+        class="catalogo__filtros"
+        [class.catalogo__filtros--aberto]="filtrosMobileAberto()"
+      >
         <app-filtros
           (filtrosAlterados)="atualizarFiltros($event)"
         />
       </div>
 
+
+      <!-- CONTEÚDO -->
       <div class="catalogo__conteudo">
 
+        <!-- CABEÇALHO -->
         <div class="catalogo__cabecalho">
-          <div>
+
+          <div class="catalogo__titulo">
+
             <span class="catalogo__subtitulo">
               Seleção especial
             </span>
@@ -25,51 +34,87 @@
               {{ produtosFiltrados().length }}
               produtos encontrados
             </p>
+
           </div>
 
-          <select
-            class="catalogo__ordenacao"
-            [value]="ordenacao()"
-            (change)="atualizarOrdenacao($any($event.target).value)"
-          >
-            <option value="relevancia">
-              Ordenar por relevância
-            </option>
 
-            <option value="menor-preco">
-              Menor preço
-            </option>
+          <!-- AÇÕES: ORDENAÇÃO + FILTROS MOBILE -->
+          <div class="catalogo__acoes">
 
-            <option value="maior-preco">
-              Maior preço
-            </option>
+            <select
+              class="catalogo__ordenacao"
+              [value]="ordenacao()"
+              (change)="atualizarOrdenacao($any($event.target).value)"
+            >
+              <option value="relevancia">
+                Ordenar por relevância
+              </option>
 
-            <option value="mais-vendidos">
-              Mais vendidos
-            </option>
+              <option value="menor-preco">
+                Menor preço
+              </option>
 
-            <option value="novidades">
-              Novidades
-            </option>
-          </select>
+              <option value="maior-preco">
+                Maior preço
+              </option>
+
+              <option value="mais-vendidos">
+                Mais vendidos
+              </option>
+
+              <option value="novidades">
+                Novidades
+              </option>
+            </select>
+
+
+            <!-- BOTÃO FILTROS - MOBILE -->
+            <button
+              type="button"
+              class="catalogo__botao-filtros"
+              (click)="alternarFiltrosMobile()"
+              [attr.aria-expanded]="filtrosMobileAberto()"
+            >
+              <i class="bi bi-sliders"></i>
+
+              <span>
+                Filtros
+              </span>
+
+              <i
+                class="bi"
+                [class.bi-chevron-down]="!filtrosMobileAberto()"
+                [class.bi-chevron-up]="filtrosMobileAberto()"
+              ></i>
+            </button>
+
+          </div>
+
         </div>
 
+
+        <!-- PRODUTOS -->
         @if (produtosFiltrados().length > 0) {
 
           <div class="catalogo__grid">
+
             @for (
               produto of produtosFiltrados();
               track produto.id
             ) {
+
               <app-card-produto
                 [produto]="produto"
               />
+
             }
+
           </div>
 
         } @else {
 
           <div class="catalogo__vazio">
+
             <i class="bi bi-search"></i>
 
             <h3>
@@ -79,6 +124,7 @@
             <p>
               Tente alterar os filtros para encontrar outros produtos.
             </p>
+
           </div>
 
         }

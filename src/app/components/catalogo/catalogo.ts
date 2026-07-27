@@ -30,6 +30,8 @@ export class Catalogo {
 
   readonly ordenacao = signal('relevancia');
 
+  readonly filtrosMobileAberto = signal(false);
+
   readonly produtosFiltrados = computed(() => {
     const filtros = this.filtros();
     const ordenacao = this.ordenacao();
@@ -111,5 +113,11 @@ export class Catalogo {
 
   atualizarOrdenacao(valor: string): void {
     this.ordenacao.set(valor);
+  }
+
+  alternarFiltrosMobile(): void {
+    this.filtrosMobileAberto.update(
+      aberto => !aberto
+    );
   }
 }
