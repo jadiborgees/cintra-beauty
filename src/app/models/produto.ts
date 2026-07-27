@@ -7,7 +7,11 @@ export interface Produto {
   marca: string;
   categoria: string;
 
-  genero: 'Masculino' | 'Feminino' | 'Unissex';
+  genero:
+    | 'Masculino'
+    | 'Feminino'
+    | 'Unissex'
+    | 'Infantil';
 
   volume: string;
 
@@ -15,7 +19,6 @@ export interface Produto {
   precoAnterior?: number;
 
   imagem: string;
-
   descricao?: string;
 
   estoque: number;

@@ -15,7 +15,7 @@ export class ProdutoService {
       genero: 'Masculino',
       volume: '100ml',
       preco: 699.9,
-      imagem: '/produtos/sauvage.png',
+      imagem: '/sauvage-dior.png',
       estoque: 10,
 
       familiaOlfativa: 'Aromático',
@@ -35,7 +35,7 @@ export class ProdutoService {
       genero: 'Feminino',
       volume: '80ml',
       preco: 629.9,
-      imagem: '/produtos/good-girl-blush.png',
+      imagem: '/good-girl-carolina-herrera.png',
       estoque: 8,
 
       familiaOlfativa: 'Floral',
@@ -54,7 +54,7 @@ export class ProdutoService {
       genero: 'Masculino',
       volume: '100ml',
       preco: 849.9,
-      imagem: '/produtos/bleu-de-chanel.png',
+      imagem: '/bleu-de-chanel.png',
       estoque: 6,
 
       familiaOlfativa: 'Amadeirado',
@@ -73,7 +73,7 @@ export class ProdutoService {
       genero: 'Feminino',
       volume: '90ml',
       preco: 759.9,
-      imagem: '/produtos/libre.png',
+      imagem: '/libre-yves-saint-laurent.png',
       estoque: 7,
 
       familiaOlfativa: 'Floral',
@@ -82,6 +82,74 @@ export class ProdutoService {
 
       destaque: true,
       novidade: true
+    },
+
+    {
+      id: 5,
+      nome: 'CK One',
+      slug: 'ck-one',
+      marca: 'Calvin Klein',
+      categoria: 'Importados',
+      genero: 'Unissex',
+      volume: '100ml',
+      preco: 399.9,
+      imagem: '/ck-one-calvin-klein.png',
+      estoque: 10,
+
+      familiaOlfativa: 'Cítrico',
+      intensidade: 'Suave',
+      ocasiao: 'Dia'
+    },
+
+    {
+      id: 6,
+      nome: '4711 Original Eau de Cologne',
+      slug: '4711-original',
+      marca: '4711',
+      categoria: 'Importados',
+      genero: 'Unissex',
+      volume: '100ml',
+      preco: 249.9,
+      imagem: '/4711-original.png',
+      estoque: 8,
+
+      familiaOlfativa: 'Cítrico',
+      intensidade: 'Suave',
+      ocasiao: 'Dia'
+    },
+
+    {
+      id: 7,
+      nome: 'Tous Kids Girl',
+      slug: 'tous-kids-girl',
+      marca: 'Tous',
+      categoria: 'Infantil',
+      genero: 'Infantil',
+      volume: '100ml',
+      preco: 299.9,
+      imagem: '/tous-kids-girl.png',
+      estoque: 6,
+
+      familiaOlfativa: 'Frutado',
+      intensidade: 'Suave',
+      ocasiao: 'Dia'
+    },
+
+    {
+      id: 8,
+      nome: 'Bvlgari Petits et Mamans',
+      slug: 'bvlgari-petits-et-mamans',
+      marca: 'Bvlgari',
+      categoria: 'Infantil',
+      genero: 'Infantil',
+      volume: '100ml',
+      preco: 449.9,
+      imagem: '/bvlgari-petits-et-mamans.png',
+      estoque: 5,
+
+      familiaOlfativa: 'Floral',
+      intensidade: 'Suave',
+      ocasiao: 'Dia'
     }
   ]);
 

@@ -6,6 +6,7 @@ export interface FiltrosCatalogo {
   genero: string;
   marca: string;
   precoMaximo: number;
+  destaque: string;
 }
 
 @Component({
@@ -22,6 +23,8 @@ export class Filtros {
   marca = signal('');
   precoMaximo = signal(2500);
 
+  destaque = signal('');
+
   readonly marcas = [
     'Dior',
     'Chanel',
@@ -34,7 +37,8 @@ export class Filtros {
       busca: this.busca(),
       genero: this.genero(),
       marca: this.marca(),
-      precoMaximo: this.precoMaximo()
+      precoMaximo: this.precoMaximo(),
+      destaque: this.destaque()
     });
   }
 
@@ -43,6 +47,7 @@ export class Filtros {
     this.genero.set('');
     this.marca.set('');
     this.precoMaximo.set(2500);
+    this.destaque.set('');
 
     this.atualizarFiltros();
   }

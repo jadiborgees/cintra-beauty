@@ -13,6 +13,12 @@ export class WhatsappService {
     itens: ItemCarrinho[],
     nomeCliente: string,
     cep: string,
+    logradouro: string,
+    numero: string,
+    complemento: string,
+    bairro: string,
+    cidade: string,
+    uf: string,
     frete: OpcaoFrete,
     total: number
   ): void {
@@ -25,27 +31,42 @@ export class WhatsappService {
         return [
           `*${item.produto.nome}*`,
           `${item.produto.marca} - ${item.produto.volume}`,
-          `Qtd: ${item.quantidade}`,
+          `Quantidade: ${item.quantidade}`,
           `Valor: ${this.formatarMoeda(valorProduto)}`
         ].join('\n');
       })
       .join('\n\n');
+
+    const enderecoTexto = [
+      `CEP: ${cep}`,
+      `Endereço: ${logradouro}, ${numero}`,
+      complemento
+        ? `Complemento: ${complemento}`
+        : null,
+      `Bairro: ${bairro}`,
+      `Cidade: ${cidade} - ${uf}`
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     const mensagem = [
       `Olá, meu nome é ${nomeCliente}!`,
       '',
       'Gostaria de fazer este pedido:',
       '',
+      '*PEDIDO*',
+      '',
       produtosTexto,
       '',
-      '*Frete:*',
-      frete.nome,
-      this.formatarMoeda(frete.valor),
+      '*DADOS PARA ENTREGA*',
       '',
-      '*CEP:*',
-      cep,
+      enderecoTexto,
       '',
-      '*Total:*',
+      '*FRETE*',
+      `${frete.nome}`,
+      `Valor: ${this.formatarMoeda(frete.valor)}`,
+      '',
+      '*TOTAL*',
       this.formatarMoeda(total)
     ].join('\n');
 

@@ -24,7 +24,8 @@ export class Catalogo {
     busca: '',
     genero: '',
     marca: '',
-    precoMaximo: 2500
+    precoMaximo: 2500,
+    destaque: ''
   });
 
   readonly produtosFiltrados = computed(() => {
@@ -51,11 +52,23 @@ export class Catalogo {
       const correspondePreco =
         produto.preco <= filtros.precoMaximo;
 
+      const correspondeDestaque =
+        !filtros.destaque ||
+        (
+          filtros.destaque === 'mais-vendidos' &&
+          produto.maisVendido === true
+        ) ||
+        (
+          filtros.destaque === 'novidades' &&
+          produto.novidade === true
+        );
+
       return (
         correspondeBusca &&
         correspondeGenero &&
         correspondeMarca &&
-        correspondePreco
+        correspondePreco &&
+        correspondeDestaque
       );
     });
   });

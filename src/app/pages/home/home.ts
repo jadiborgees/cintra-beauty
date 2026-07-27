@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Hero } from '../../components/hero/hero';
-import { MaisVendidos } from '../../components/mais-vendidos/mais-vendidos';
-import { Catalogo } from '../../components/catalogo/catalogo';
 import { Marcas } from '../../components/marcas/marcas';
-import { Novidades } from '../../components/novidades/novidades';
-import { Consultora } from '../../components/consultora/consultora';
+import { Catalogo } from '../../components/catalogo/catalogo';
 import { ComoComprar } from '../../components/como-comprar/como-comprar';
 import { Footer } from '../../components/footer/footer';
 
@@ -14,10 +11,7 @@ import { Footer } from '../../components/footer/footer';
   imports: [
     Hero,
     Marcas,
-    MaisVendidos,
-    Novidades,
     Catalogo,
-    Consultora,
     ComoComprar,
     Footer
   ],

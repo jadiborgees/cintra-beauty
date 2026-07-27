@@ -22,36 +22,38 @@
 ======================================== */
 
 .footer__marca {
-  max-width: 320px;
+  max-width: 330px;
 }
+
+/* LOGO COMPLETA */
 
 .footer__logo {
   display: inline-flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 8px;
 
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 
   color: var(--cor-branco);
 
   text-decoration: none;
 }
 
-/* EC */
+/* SÍMBOLO EC */
 
 .footer__logo-imagem {
   display: block;
 
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
 
   object-fit: contain;
 
   flex-shrink: 0;
 }
 
-/* ELEGANCE + CINTRA */
+/* BLOCO DE TEXTO */
 
 .footer__logo-texto {
   display: flex;
@@ -61,45 +63,69 @@
   line-height: 1;
 }
 
+/* ELEGANCE CINTRA */
+
 .footer__logo-principal {
   color: var(--cor-branco);
 
   font-family: Georgia, 'Times New Roman', serif;
 
-  font-size: 1.45rem;
+  font-size: 1.05rem;
   font-weight: 400;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.055em;
 
   white-space: nowrap;
 }
 
-/* CINTRA */
+/* BEAUTY */
 
 .footer__logo-secundario {
-  margin-top: 5px;
+  margin-top: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
 
   color: var(--cor-dourado);
 
-  font-size: 0.7rem;
+  font-size: 0.46rem;
   font-weight: 700;
 
-  letter-spacing: 0.38em;
-
-  text-align: center;
+  letter-spacing: 0.42em;
 
   white-space: nowrap;
 }
 
-/* TEXTO DA MARCA */
+/* TRAÇOS DO BEAUTY */
 
+.footer__logo-secundario::before,
+.footer__logo-secundario::after {
+  content: '';
+
+  width: 32px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: var(--cor-dourado);
+}
+
+/* ========================================
+   DESCRIÇÃO DA MARCA
+======================================== */
+
+.footer__descricao,
 .footer__marca > p {
   max-width: 290px;
+
+  margin: 0;
 
   color: rgba(255, 255, 255, 0.58);
 
   font-size: 0.78rem;
-
   line-height: 1.8;
 }
 
@@ -126,6 +152,7 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
 
   background: transparent;
+
   color: var(--cor-branco);
 
   font-size: 1rem;
@@ -142,7 +169,8 @@
 .footer__redes a:hover {
   border-color: var(--cor-dourado);
 
-  background: rgba(212, 175, 55, 0.06);
+  background-color: rgba(212, 175, 55, 0.06);
+
   color: var(--cor-dourado);
 
   transform: translateY(-2px);
@@ -185,6 +213,8 @@
 
 .footer__coluna p {
   max-width: 230px;
+
+  margin: 0;
 
   line-height: 1.7;
 }
@@ -233,6 +263,7 @@
 ======================================== */
 
 @media (max-width: 950px) {
+
   .footer__conteudo {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
@@ -245,6 +276,30 @@
   .footer__marca {
     max-width: 100%;
   }
+
+  .footer__logo-imagem {
+    width: 46px;
+    height: 46px;
+  }
+
+  .footer__logo-principal {
+    font-size: 1rem;
+  }
+
+  .footer__logo-secundario {
+    margin-top: 5px;
+
+    gap: 6px;
+
+    font-size: 0.43rem;
+
+    letter-spacing: 0.36em;
+  }
+
+  .footer__logo-secundario::before,
+  .footer__logo-secundario::after {
+    width: 29px;
+  }
 }
 
 /* ========================================
@@ -252,6 +307,7 @@
 ======================================== */
 
 @media (max-width: 600px) {
+
   .footer__conteudo {
     grid-template-columns: 1fr;
 
@@ -264,37 +320,55 @@
   /* LOGO */
 
   .footer__logo {
-    gap: 8px;
+    gap: 6px;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
+
+  /* EC */
 
   .footer__logo-imagem {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
+
+  /* ELEGANCE CINTRA */
 
   .footer__logo-principal {
-    font-size: 1.25rem;
+    font-size: 1.12rem;
 
-    letter-spacing: 0.1em;
+    letter-spacing: 0.04em;
   }
 
-  /* CINTRA MAIOR */
+  /* BEAUTY */
 
   .footer__logo-secundario {
-    margin-top: 4px;
+    margin-top: 5px;
 
-    font-size: 0.5rem;
+    gap: 5px;
+
+    font-size: 0.46rem;
 
     letter-spacing: 0.32em;
   }
 
+  /* TRAÇOS MENORES NO MOBILE */
+
+  .footer__logo-secundario::before,
+  .footer__logo-secundario::after {
+    width: 27px;
+  }
+
+  /* DESCRIÇÃO */
+
+  .footer__descricao,
   .footer__marca > p {
     max-width: 100%;
 
     font-size: 0.78rem;
   }
+
+  /* REDES */
 
   .footer__redes {
     margin-top: 20px;
@@ -314,7 +388,7 @@
     max-width: 100%;
   }
 
-  /* RODAPÉ INFERIOR */
+  /* PARTE INFERIOR */
 
   .footer__inferior-conteudo {
     min-height: auto;
