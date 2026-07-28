@@ -1,8 +1,14 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  signal
+} from '@angular/core';
 
 import { ProdutoService } from '../../services/produto';
 
 import { CardProduto } from '../card-produto/card-produto';
+
 import {
   Filtros,
   FiltrosCatalogo
@@ -18,104 +24,205 @@ import {
   styleUrl: './catalogo.css'
 })
 export class Catalogo {
-  private readonly produtoService = inject(ProdutoService);
 
-  readonly filtros = signal<FiltrosCatalogo>({
-    busca: '',
-    genero: '',
-    marca: '',
-    precoMaximo: 2500,
-    destaque: ''
-  });
+  private readonly produtoService =
+    inject(ProdutoService);
 
-  readonly ordenacao = signal('relevancia');
+  /* ========================================
+     FILTROS
+  ======================================== */
 
-  readonly filtrosMobileAberto = signal(false);
+  readonly filtros =
+    signal<FiltrosCatalogo>({
+      busca: '',
+      genero: '',
+      marca: '',
 
-  readonly produtosFiltrados = computed(() => {
-    const filtros = this.filtros();
-    const ordenacao = this.ordenacao();
+      precoMinimo: 0,
+      precoMaximo: 2500,
 
-    const produtos = this.produtoService.produtos().filter(produto => {
-      const busca = filtros.busca
-        .trim()
-        .toLowerCase();
-
-      const correspondeBusca =
-        !busca ||
-        produto.nome.toLowerCase().includes(busca) ||
-        produto.marca.toLowerCase().includes(busca);
-
-      const correspondeGenero =
-        !filtros.genero ||
-        produto.genero === filtros.genero;
-
-      const correspondeMarca =
-        !filtros.marca ||
-        produto.marca === filtros.marca;
-
-      const correspondePreco =
-        produto.preco <= filtros.precoMaximo;
-
-      const correspondeDestaque =
-        !filtros.destaque ||
-        (
-          filtros.destaque === 'mais-vendidos' &&
-          produto.maisVendido === true
-        ) ||
-        (
-          filtros.destaque === 'novidades' &&
-          produto.novidade === true
-        );
-
-      return (
-        correspondeBusca &&
-        correspondeGenero &&
-        correspondeMarca &&
-        correspondePreco &&
-        correspondeDestaque
-      );
+      destaque: ''
     });
 
-    switch (ordenacao) {
-      case 'menor-preco':
-        return [...produtos].sort(
-          (a, b) => a.preco - b.preco
-        );
+  /* ========================================
+     ORDENAÇÃO
+  ======================================== */
 
-      case 'maior-preco':
-        return [...produtos].sort(
-          (a, b) => b.preco - a.preco
-        );
+  readonly ordenacao =
+    signal('relevancia');
 
-      case 'mais-vendidos':
-        return [...produtos].sort(
-          (a, b) =>
-            Number(Boolean(b.maisVendido)) -
-            Number(Boolean(a.maisVendido))
-        );
+  /* ========================================
+     FILTRO MOBILE
+  ======================================== */
 
-      case 'novidades':
-        return [...produtos].sort(
-          (a, b) =>
-            Number(Boolean(b.novidade)) -
-            Number(Boolean(a.novidade))
-        );
+  readonly filtrosMobileAberto =
+    signal(false);
 
-      default:
-        return produtos;
-    }
-  });
+  /* ========================================
+     PRODUTOS FILTRADOS
+  ======================================== */
 
-  atualizarFiltros(filtros: FiltrosCatalogo): void {
-    this.filtros.set(filtros);
+  readonly produtosFiltrados =
+    computed(() => {
+
+      const filtros =
+        this.filtros();
+
+      const ordenacao =
+        this.ordenacao();
+
+      const produtos =
+        this.produtoService
+          .produtos()
+          .filter(produto => {
+
+            /* BUSCA */
+
+            const busca =
+              filtros.busca
+                .trim()
+                .toLowerCase();
+
+            const correspondeBusca =
+              !busca ||
+              produto.nome
+                .toLowerCase()
+                .includes(busca) ||
+              produto.marca
+                .toLowerCase()
+                .includes(busca);
+
+            /* GÊNERO */
+
+            const correspondeGenero =
+              !filtros.genero ||
+              produto.genero ===
+                filtros.genero;
+
+            /* MARCA */
+
+            const correspondeMarca =
+              !filtros.marca ||
+              produto.marca ===
+                filtros.marca;
+
+            /* PREÇO */
+
+            const correspondePreco =
+              produto.preco >=
+                filtros.precoMinimo &&
+              produto.preco <=
+                filtros.precoMaximo;
+
+            /* DESTAQUES */
+
+            const correspondeDestaque =
+              !filtros.destaque ||
+              (
+                filtros.destaque ===
+                  'mais-vendidos' &&
+                produto.maisVendido === true
+              ) ||
+              (
+                filtros.destaque ===
+                  'novidades' &&
+                produto.novidade === true
+              );
+
+            return (
+              correspondeBusca &&
+              correspondeGenero &&
+              correspondeMarca &&
+              correspondePreco &&
+              correspondeDestaque
+            );
+          });
+
+      /* ====================================
+         ORDENAÇÃO
+      ==================================== */
+
+      switch (ordenacao) {
+
+        case 'menor-preco':
+
+          return [...produtos]
+            .sort(
+              (a, b) =>
+                a.preco - b.preco
+            );
+
+        case 'maior-preco':
+
+          return [...produtos]
+            .sort(
+              (a, b) =>
+                b.preco - a.preco
+            );
+
+        case 'mais-vendidos':
+
+          return [...produtos]
+            .sort(
+              (a, b) =>
+                Number(
+                  Boolean(b.maisVendido)
+                ) -
+                Number(
+                  Boolean(a.maisVendido)
+                )
+            );
+
+        case 'novidades':
+
+          return [...produtos]
+            .sort(
+              (a, b) =>
+                Number(
+                  Boolean(b.novidade)
+                ) -
+                Number(
+                  Boolean(a.novidade)
+                )
+            );
+
+        default:
+          return produtos;
+      }
+    });
+
+  /* ========================================
+     ATUALIZAR FILTROS
+  ======================================== */
+
+  atualizarFiltros(
+    filtros: FiltrosCatalogo
+  ): void {
+
+    this.filtros.set(
+      filtros
+    );
   }
 
-  atualizarOrdenacao(valor: string): void {
-    this.ordenacao.set(valor);
+  /* ========================================
+     ATUALIZAR ORDENAÇÃO
+  ======================================== */
+
+  atualizarOrdenacao(
+    valor: string
+  ): void {
+
+    this.ordenacao.set(
+      valor
+    );
   }
+
+  /* ========================================
+     FILTROS MOBILE
+  ======================================== */
 
   alternarFiltrosMobile(): void {
+
     this.filtrosMobileAberto.update(
       aberto => !aberto
     );

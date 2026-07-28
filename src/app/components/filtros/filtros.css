@@ -6,6 +6,10 @@
   border-right: 1px solid var(--cor-cinza-claro);
 }
 
+/* ========================================
+   TÍTULO
+======================================== */
+
 .filtros__titulo {
   display: flex;
   align-items: center;
@@ -19,6 +23,10 @@
 
   text-transform: uppercase;
 }
+
+/* ========================================
+   GRUPOS
+======================================== */
 
 .filtros__grupo {
   padding: 20px 0;
@@ -42,6 +50,10 @@
   text-transform: uppercase;
 }
 
+/* ========================================
+   BUSCA
+======================================== */
+
 .filtros__busca {
   position: relative;
 }
@@ -54,10 +66,18 @@
   border: 1px solid var(--cor-cinza-claro);
 
   outline: none;
+
+  transition:
+    border-color var(--transicao),
+    box-shadow var(--transicao);
 }
 
 .filtros__busca input:focus {
   border-color: var(--cor-dourado);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(201, 162, 39, 0.08);
 }
 
 .filtros__busca i {
@@ -67,7 +87,13 @@
   right: 12px;
 
   transform: translateY(-50%);
+
+  color: var(--cor-cinza);
 }
+
+/* ========================================
+   OPÇÕES
+======================================== */
 
 .filtros__opcao {
   display: flex;
@@ -84,6 +110,14 @@
   cursor: pointer;
 }
 
+.filtros__opcao input {
+  accent-color: var(--cor-dourado);
+}
+
+/* ========================================
+   SELECT
+======================================== */
+
 .filtros__grupo select {
   width: 100%;
 
@@ -94,28 +128,136 @@
   background: var(--cor-branco);
 
   outline: none;
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transicao),
+    box-shadow var(--transicao);
 }
 
-.filtros__range {
-  width: 100%;
+.filtros__grupo select:focus {
+  border-color: var(--cor-dourado);
 
-  accent-color: var(--cor-dourado);
+  box-shadow:
+    0 0 0 3px
+    rgba(201, 162, 39, 0.08);
 }
 
-.filtros__preco {
-  display: flex;
-  justify-content: space-between;
+/* ========================================
+   FAIXA DE PREÇO
+======================================== */
+
+.filtros__precos {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 10px;
-
-  margin-top: 8px;
-
-  font-size: 0.72rem;
 }
 
-.filtros__preco span {
+/* CAMPO */
+
+.filtros__campo-preco {
+  min-width: 0;
+}
+
+.filtros__campo-preco label {
+  display: block;
+
+  margin-bottom: 6px;
+
   color: var(--cor-cinza);
+
+  font-size: 0.66rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
 }
+
+/* INPUT COM R$ */
+
+.filtros__input-preco {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.filtros__input-preco span {
+  position: absolute;
+
+  left: 10px;
+
+  z-index: 1;
+
+  color: var(--cor-cinza);
+
+  font-size: 0.7rem;
+
+  pointer-events: none;
+}
+
+.filtros__input-preco input {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+
+  padding:
+    0
+    8px
+    0
+    30px;
+
+  border:
+    1px solid
+    var(--cor-cinza-claro);
+
+  background:
+    var(--cor-branco);
+
+  color:
+    var(--cor-texto);
+
+  font-size: 0.75rem;
+
+  outline: none;
+
+  transition:
+    border-color var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.filtros__input-preco input:focus {
+  border-color:
+    var(--cor-dourado);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(201, 162, 39, 0.08);
+}
+
+/* REMOVE SETINHAS DO NUMBER */
+
+.filtros__input-preco
+input::-webkit-inner-spin-button,
+.filtros__input-preco
+input::-webkit-outer-spin-button {
+  margin: 0;
+
+  -webkit-appearance: none;
+}
+
+.filtros__input-preco input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ========================================
+   LIMPAR FILTROS
+======================================== */
 
 .filtros__limpar {
   width: 100%;
@@ -124,10 +266,14 @@
 
   padding: 11px;
 
-  border: 1px solid var(--cor-cinza-claro);
+  border:
+    1px solid
+    var(--cor-cinza-claro);
 
   background: transparent;
-  color: var(--cor-preto);
+
+  color:
+    var(--cor-preto);
 
   font-size: 0.72rem;
   font-weight: 700;
@@ -136,15 +282,20 @@
 
   transition:
     background var(--transicao),
-    color var(--transicao);
+    color var(--transicao),
+    border-color var(--transicao);
 }
 
 .filtros__limpar:hover {
-  background: var(--cor-preto);
+  border-color:
+    var(--cor-preto);
 
-  color: var(--cor-branco);
+  background:
+    var(--cor-preto);
+
+  color:
+    var(--cor-branco);
 }
-
 
 /* ========================================
    TABLET
@@ -157,9 +308,7 @@
 
     border-right: 0;
   }
-
 }
-
 
 /* ========================================
    MOBILE
@@ -170,9 +319,12 @@
   .filtros {
     padding: 14px;
 
-    border: 1px solid var(--cor-cinza-claro);
+    border:
+      1px solid
+      var(--cor-cinza-claro);
 
-    background: var(--cor-branco);
+    background:
+      var(--cor-branco);
   }
 
   /* TÍTULO */
@@ -242,21 +394,41 @@
   .filtros__grupo select {
     min-height: 38px;
 
-    padding: 8px 10px;
+    padding:
+      8px
+      10px;
 
     font-size: 0.75rem;
   }
 
-  /* RANGE */
+  /* PREÇOS */
 
-  .filtros__range {
-    margin-top: 2px;
+  .filtros__precos {
+    gap: 8px;
   }
 
-  .filtros__preco {
-    margin-top: 5px;
+  .filtros__campo-preco label {
+    margin-bottom: 5px;
 
-    font-size: 0.66rem;
+    font-size: 0.6rem;
+  }
+
+  .filtros__input-preco span {
+    left: 9px;
+
+    font-size: 0.65rem;
+  }
+
+  .filtros__input-preco input {
+    height: 38px;
+
+    padding:
+      0
+      6px
+      0
+      28px;
+
+    font-size: 0.7rem;
   }
 
   /* LIMPAR */
@@ -270,5 +442,19 @@
 
     font-size: 0.65rem;
   }
+}
 
+/* ========================================
+   MOBILE PEQUENO
+======================================== */
+
+@media (max-width: 380px) {
+
+  .filtros__precos {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros__input-preco input {
+    font-size: 0.72rem;
+  }
 }

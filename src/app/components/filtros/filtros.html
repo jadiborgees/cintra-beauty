@@ -144,25 +144,77 @@
 
   <!-- FAIXA DE PREÇO -->
   <div class="filtros__grupo">
-    <h3>Faixa de preço</h3>
 
-    <input
-      class="filtros__range"
-      type="range"
-      min="100"
-      max="2500"
-      step="50"
-      [ngModel]="precoMaximo()"
-      (ngModelChange)="precoMaximo.set(+$event); atualizarFiltros()"
-    >
+    <h3>
+      Faixa de preço
+    </h3>
 
-    <div class="filtros__preco">
-      <span>R$ 100</span>
+    <div class="filtros__precos">
 
-      <strong>
-        Até R$ {{ precoMaximo() }}
-      </strong>
+      <!-- MÍNIMO -->
+      <div class="filtros__campo-preco">
+
+        <label for="preco-minimo">
+          Mínimo
+        </label>
+
+        <div class="filtros__input-preco">
+
+          <span>
+            R$
+          </span>
+
+          <input
+            id="preco-minimo"
+            type="number"
+            min="0"
+            step="10"
+            placeholder="0"
+
+            [ngModel]="precoMinimo()"
+
+            (ngModelChange)="
+              atualizarPrecoMinimo($event)
+            "
+          >
+
+        </div>
+
+      </div>
+
+      <!-- MÁXIMO -->
+      <div class="filtros__campo-preco">
+
+        <label for="preco-maximo">
+          Máximo
+        </label>
+
+        <div class="filtros__input-preco">
+
+          <span>
+            R$
+          </span>
+
+          <input
+            id="preco-maximo"
+            type="number"
+            min="0"
+            step="10"
+            placeholder="2500"
+
+            [ngModel]="precoMaximo()"
+
+            (ngModelChange)="
+              atualizarPrecoMaximo($event)
+            "
+          >
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 
   <!-- LIMPAR FILTROS -->
