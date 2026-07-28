@@ -19,14 +19,34 @@
 
       @for (marca of marcas; track $index) {
         <div class="marca">
-          {{ marca }}
+
+          <img
+            [src]="marca.logo"
+            [alt]="marca.nome"
+            class="marca__logo"
+          >
+
+          <span class="marca__nome">
+            {{ marca.nome }}
+          </span>
+
         </div>
       }
 
-      <!-- Repetimos para criar o efeito infinito -->
+      <!-- REPETIÇÃO PARA O LOOP INFINITO -->
       @for (marca of marcas; track $index) {
         <div class="marca">
-          {{ marca }}
+
+          <img
+            [src]="marca.logo"
+            [alt]="marca.nome"
+            class="marca__logo"
+          >
+
+          <span class="marca__nome">
+            {{ marca.nome }}
+          </span>
+
         </div>
       }
 

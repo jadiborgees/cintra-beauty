@@ -7,8 +7,9 @@
   --cor-branco: #ffffff;
   --cor-off-white: #f8f6f1;
 
-  --cor-dourado: #d4af37;
-  --cor-dourado-claro: #f0d675;
+  --ouro-claro: #f4e7b2;
+  --ouro-medio: #c9a227;
+  --ouro-escuro: #7f5f17;
 
   --cor-cinza: #777777;
   --cor-cinza-claro: #e7e7e7;
@@ -23,6 +24,10 @@
   --transicao: 0.3s ease;
 }
 
+/* ========================================
+   RESET
+======================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -34,13 +39,30 @@ html {
   scroll-padding-top: 90px;
 }
 
+/* ========================================
+   BODY
+======================================== */
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+
   background: var(--cor-branco);
   color: var(--cor-texto);
+
   line-height: 1.5;
-  padding-top: 80px;
+
+  /*
+    O header desktop possui 78px.
+    O padding precisa ter exatamente
+    a mesma altura para não criar
+    espaço branco entre header e hero.
+  */
+  padding-top: 78px;
 }
+
+/* ========================================
+   FORMULÁRIOS
+======================================== */
 
 button,
 input,
@@ -53,31 +75,55 @@ button {
   cursor: pointer;
 }
 
+/* ========================================
+   IMAGENS
+======================================== */
+
 img {
   display: block;
   max-width: 100%;
 }
+
+/* ========================================
+   LINKS
+======================================== */
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* ========================================
+   LISTAS
+======================================== */
+
 ul,
 ol {
   list-style: none;
 }
 
+/* ========================================
+   CONTAINER
+======================================== */
+
 .container {
   width: min(100% - 32px, var(--largura-container));
+
   margin-inline: auto;
 }
 
+/* ========================================
+   TÍTULOS
+======================================== */
+
 .titulo-secao {
   font-family: Georgia, 'Times New Roman', serif;
+
   font-size: 2rem;
   font-weight: 400;
+
   letter-spacing: 0.04em;
+
   text-transform: uppercase;
 }
 
@@ -85,8 +131,13 @@ ol {
   color: var(--cor-dourado);
 }
 
+/* ========================================
+   BOTÕES
+======================================== */
+
 .botao {
   min-height: 44px;
+
   padding: 0.8rem 1.4rem;
 
   border: 1px solid transparent;
@@ -94,6 +145,7 @@ ol {
 
   font-size: 0.85rem;
   font-weight: 600;
+
   text-transform: uppercase;
 
   transition:
@@ -122,8 +174,13 @@ ol {
 
 .botao-contorno {
   background: transparent;
+
   border-color: currentColor;
 }
+
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 768px) {
   .container {
@@ -132,5 +189,21 @@ ol {
 
   .titulo-secao {
     font-size: 1.6rem;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 520px) {
+
+  /*
+    Header mobile = 70px.
+    Mantemos o body exatamente
+    com a mesma compensação.
+  */
+  body {
+    padding-top: 70px;
   }
 }

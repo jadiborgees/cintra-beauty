@@ -1,35 +1,52 @@
 .hero {
   position: relative;
 
-  min-height: 560px;
+  min-height: 570px;
 
   display: flex;
   align-items: center;
 
   overflow: hidden;
 
-  background:
+  background-color: #000;
+
+  background-image:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(0, 0, 0, 0.72) 42%,
-      rgba(0, 0, 0, 0.18) 100%
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.55) 35%,
+      rgba(0, 0, 0, 0.08) 65%,
+      rgba(0, 0, 0, 0) 100%
     ),
-    url('/hero-perfume.png') center / cover no-repeat;
+    url('/hero-perfume (2).png');
+
+  background-repeat: no-repeat;
+
+  /* DIMINUI A IMAGEM SEM ALTERAR A PROPORÇÃO */
+  background-size: 90% auto;
+
+  /* JOGA A IMAGEM PARA A DIREITA */
+  background-position: right center;
 }
+
+/* ========================================
+   OVERLAY
+======================================== */
 
 .hero__overlay {
   position: absolute;
   inset: 0;
 
   background:
-    radial-gradient(
-      circle at 70% 50%,
+    radial-gradient(circle at 70% 50%,
       transparent 0%,
       rgba(0, 0, 0, 0.1) 50%,
-      rgba(0, 0, 0, 0.35) 100%
-    );
+      rgba(0, 0, 0, 0.35) 100%);
 }
+
+/* ========================================
+   CONTEÚDO
+======================================== */
 
 .hero__content {
   position: relative;
@@ -37,11 +54,19 @@
   z-index: 2;
 }
 
+/* ========================================
+   BLOCO DE TEXTO
+======================================== */
+
 .hero__text {
-  max-width: 600px;
+  max-width: 760px;
 
   color: var(--cor-branco);
 }
+
+/* ========================================
+   TEXTO SUPERIOR
+======================================== */
 
 .hero__eyebrow {
   display: block;
@@ -54,15 +79,23 @@
   font-weight: 700;
 
   letter-spacing: 0.22em;
+
   text-transform: uppercase;
 }
 
+/* ========================================
+   TÍTULO
+======================================== */
+
 .hero h1 {
-  max-width: 550px;
+  max-width: 760px;
 
   margin-bottom: 20px;
 
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family:
+    Georgia,
+    'Times New Roman',
+    serif;
 
   font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 400;
@@ -72,24 +105,52 @@
   text-transform: uppercase;
 }
 
+/* ========================================
+   OURO METÁLICO
+======================================== */
+
 .hero h1 span {
   display: block;
 
   margin-top: 10px;
 
-  color: var(--cor-dourado);
+  background:
+    linear-gradient(135deg,
+      var(--ouro-escuro) 0%,
+      var(--ouro-medio) 25%,
+      var(--ouro-claro) 50%,
+      var(--ouro-medio) 75%,
+      var(--ouro-escuro) 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
 }
 
+/* ========================================
+   DESCRIÇÃO
+======================================== */
+
+.hero__descricao,
 .hero p {
   max-width: 480px;
 
   margin-bottom: 30px;
 
-  color: rgba(255, 255, 255, 0.82);
+  color:
+    rgba(255, 255, 255, 0.82);
 
   font-size: 1rem;
+
   line-height: 1.7;
 }
+
+/* ========================================
+   AÇÕES
+======================================== */
 
 .hero__actions {
   display: flex;
@@ -98,6 +159,78 @@
   gap: 12px;
 }
 
+/* ========================================
+   BOTÃO CATÁLOGO
+======================================== */
+
+.hero__catalogo {
+  min-width: 155px;
+  min-height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 0.8rem 1.4rem;
+
+  background-color: #c9a227;
+  color: #0b0b0b;
+
+  border: 1px solid #c9a227;
+  border-radius: var(--raio-pequeno);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  opacity: 1;
+}
+
+.hero__catalogo,
+.hero__catalogo:visited {
+  background-color: #c9a227;
+  color: #0b0b0b;
+}
+
+.hero__catalogo:hover {
+  background-color: #e8cc6a;
+  border-color: #e8cc6a;
+
+  color: #0b0b0b;
+}
+
+/* CONTEÚDO DO BOTÃO */
+
+.hero__botao-conteudo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: inherit;
+}
+
+.hero__botao-conteudo span,
+.hero__botao-conteudo i {
+  color: inherit;
+}
+
+/* SETA */
+
+.hero__botao-seta {
+  display: none;
+
+  color: inherit;
+}
+
+/* ========================================
+   WHATSAPP
+======================================== */
+
 .hero__whatsapp {
   display: inline-flex;
   align-items: center;
@@ -105,24 +238,44 @@
 
   gap: 8px;
 
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border:
+    1px solid rgba(255, 255, 255, 0.7);
 
-  color: var(--cor-branco);
-  background: transparent;
+  color:
+    var(--cor-branco);
+
+  background:
+    transparent;
 }
 
 .hero__whatsapp:hover {
-  color: var(--cor-preto);
-  background: var(--cor-branco);
+  color:
+    var(--cor-preto);
+
+  background:
+    var(--cor-branco);
 }
 
-/* TABLET */
+/* ========================================
+   BENEFÍCIOS
+   ESCONDIDOS NO DESKTOP
+======================================== */
+
+.hero__beneficios {
+  display: none;
+}
+
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 768px) {
+
   .hero {
     min-height: 600px;
 
-    background-position: 63% center;
+    background-position:
+      63% center;
   }
 
   .hero::before {
@@ -131,7 +284,8 @@
     position: absolute;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.32);
+    background:
+      rgba(0, 0, 0, 0.32);
   }
 
   .hero__text {
@@ -139,18 +293,22 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 9vw, 3.8rem);
+    max-width: 100%;
+
+    font-size:
+      clamp(2.5rem, 9vw, 3.8rem);
   }
 
+  .hero__descricao,
   .hero p {
     max-width: 420px;
   }
 
   .hero__actions {
+    max-width: 300px;
+
     align-items: stretch;
     flex-direction: column;
-
-    max-width: 300px;
   }
 
   .hero__actions .botao {
@@ -160,9 +318,12 @@
   }
 }
 
-/* CELULAR */
+/* ========================================
+   CELULAR
+======================================== */
 
 @media (max-width: 520px) {
+
   .hero {
     min-height: 560px;
 
@@ -171,8 +332,13 @@
     padding-top: 24px;
     padding-bottom: 32px;
 
+    background-size: auto 100%;
     background-position: 62% center;
   }
+
+  /* ========================================
+     CAMADA ESCURA MOBILE
+  ======================================== */
 
   .hero::before {
     content: '';
@@ -180,45 +346,88 @@
     position: absolute;
     inset: 0;
 
+    z-index: 1;
+
     background:
-      linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.15) 0%,
-        rgba(0, 0, 0, 0.35) 38%,
-        rgba(0, 0, 0, 0.82) 100%
-      );
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.24) 32%,
+        rgba(0, 0, 0, 0.68) 72%,
+        rgba(0, 0, 0, 0.92) 100%);
   }
 
   .hero__overlay {
+    z-index: 1;
+
     background:
-      radial-gradient(
-        circle at 65% 28%,
+      radial-gradient(circle at 65% 28%,
         transparent 0%,
-        rgba(0, 0, 0, 0.06) 40%,
-        rgba(0, 0, 0, 0.3) 100%
-      );
+        rgba(0, 0, 0, 0.05) 40%,
+        rgba(0, 0, 0, 0.28) 100%);
   }
 
-  .hero__content {
+  /* ========================================
+     CONTEÚDO MOBILE
+  ======================================== */
+
+  .hero .hero__content {
     width: 100%;
+    max-width: none;
+
+    margin: 0;
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    box-sizing: border-box;
   }
 
   .hero__text {
+    width: 100%;
     max-width: 100%;
+
+    margin: 0;
+    padding: 0;
   }
 
+  /* ========================================
+     PERFUMES IMPORTADOS
+  ======================================== */
+
   .hero__eyebrow {
-    margin-bottom: 10px;
+    position: relative;
+
+    margin-bottom: 18px;
 
     font-size: 0.62rem;
+    font-weight: 700;
 
     letter-spacing: 0.16em;
   }
 
+  .hero__eyebrow::after {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 30px;
+    height: 1px;
+
+    background:
+      var(--cor-dourado);
+  }
+
+  /* ========================================
+     TÍTULO MOBILE
+  ======================================== */
+
   .hero h1 {
     max-width: 330px;
 
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 
     font-size: 2.45rem;
 
@@ -226,48 +435,231 @@
   }
 
   .hero h1 span {
+    position: relative;
+
     margin-top: 5px;
+
+    background:
+      linear-gradient(90deg,
+        #8f6b16 0%,
+        #c49a2c 20%,
+        #f3dfa0 48%,
+        #c49a2c 72%,
+        #8f6b16 100%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
   }
 
+  /* ========================================
+     DESCRIÇÃO MOBILE
+  ======================================== */
+
+  .hero__descricao,
   .hero p {
     max-width: 330px;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    color:
+      rgba(255, 255, 255, 0.92);
 
     font-size: 0.82rem;
+
     line-height: 1.55;
   }
+
+  /* ========================================
+     BOTÕES MOBILE
+  ======================================== */
 
   .hero__actions {
     width: 100%;
     max-width: 330px;
 
-    align-items: stretch;
+    display: flex;
     flex-direction: column;
+    align-items: stretch;
 
-    gap: 10px;
+    gap: 9px;
   }
 
   .hero__actions .botao {
     width: 100%;
 
-    min-height: 44px;
+    min-height: 45px;
 
-    font-size: 0.72rem;
+    padding:
+      0 14px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
 
     text-align: center;
+
+    text-transform: uppercase;
+  }
+
+  /* CATÁLOGO */
+
+  .hero__catalogo {
+    position: relative;
+
+    width: 100%;
+    min-height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 42px;
+
+    background-color: #c9a227;
+    color: #0b0b0b;
+
+    border: 1px solid #c9a227;
+
+    opacity: 1;
+  }
+
+  .hero__botao-conteudo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin: 0 auto;
+  }
+
+  .hero__botao-seta {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    display: inline-block;
+
+    transform: translateY(-50%);
+
+    color: #0b0b0b;
+
+    font-size: 0.7rem;
+  }
+
+  /* WHATSAPP */
+
+  .hero__whatsapp {
+    background:
+      rgba(0, 0, 0, 0.35);
+
+    border:
+      1px solid rgba(255, 255, 255, 0.65);
+
+    color:
+      var(--cor-branco);
+  }
+
+  /* ========================================
+     BENEFÍCIOS MOBILE
+  ======================================== */
+
+  .hero__beneficios {
+    width: 100%;
+
+    margin-top: 22px;
+    padding-top: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .hero__beneficio {
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 6px;
+  }
+
+  /* ÍCONE */
+
+  .hero__beneficio-icone {
+    flex-shrink: 0;
+
+    color:
+      var(--cor-dourado);
+
+    font-size: 1rem;
+
+    line-height: 1;
+  }
+
+  /* TEXTO */
+
+  .hero__beneficio-texto {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+  }
+
+  .hero__beneficio-texto strong {
+    color:
+      var(--cor-branco);
+
+    font-size: 0.45rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+  }
+
+  .hero__beneficio-texto span {
+    color:
+      rgba(255, 255, 255, 0.7);
+
+    font-size: 0.38rem;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
   }
 }
 
-/* CELULAR PEQUENO */
+/* ========================================
+   CELULAR PEQUENO
+======================================== */
 
 @media (max-width: 380px) {
+
   .hero {
     min-height: 540px;
 
-    padding-bottom: 26px;
+    padding-bottom: 18px;
 
-    background-position: 64% center;
+    background-position:
+      64% center;
+  }
+
+  .hero .hero__content {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .hero h1 {
@@ -276,6 +668,7 @@
     font-size: 2.15rem;
   }
 
+  .hero__descricao,
   .hero p {
     max-width: 290px;
 
@@ -284,5 +677,25 @@
 
   .hero__actions {
     max-width: 290px;
+  }
+
+  .hero__beneficios {
+    gap: 5px;
+  }
+
+  .hero__beneficio {
+    gap: 4px;
+  }
+
+  .hero__beneficio-icone {
+    font-size: 0.9rem;
+  }
+
+  .hero__beneficio-texto strong {
+    font-size: 0.4rem;
+  }
+
+  .hero__beneficio-texto span {
+    font-size: 0.34rem;
   }
 }

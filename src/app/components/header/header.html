@@ -1,87 +1,331 @@
 <header class="header">
 
   @if (menuAberto()) {
-  <div class="header__menu-overlay" (click)="fecharMenu()"></div>
+    <div
+      class="header__menu-overlay"
+      (click)="fecharMenu()"
+    ></div>
   }
 
   <div class="container header__content">
 
-    <!-- LOGO -->
-    <a href="#inicio" class="header__logo" (click)="fecharMenu()" aria-label="Elegance Cintra Beauty">
-      <img src="/logo-ec.png" alt="Elegance Cintra Beauty" class="header__logo-imagem">
+    <!-- LOGO + PESQUISA DESKTOP -->
+    <div class="header__left">
 
-      <div class="header__logo-texto">
-        <span class="header__logo-main">
-          ELEGANCE CINTRA
-        </span>
+      <!-- LOGO -->
+      <a
+        href="#inicio"
+        class="header__logo"
+        (click)="fecharMenu()"
+        aria-label="Elegance Cintra Beauty"
+      >
+        <img
+          src="/logo-ec.png"
+          alt="Elegance Cintra Beauty"
+          class="header__logo-imagem"
+        >
+      </a>
 
-        <span class="header__logo-sub">
-          BEAUTY
-        </span>
-      </div>
-    </a>
+      <!-- PESQUISA DESKTOP -->
+      <form
+        class="header__search header__search--desktop"
+        (submit)="buscarNoCatalogo($event)"
+      >
 
-    <!-- MENU DESKTOP / MOBILE -->
-    <nav class="header__nav" [class.header__nav--aberto]="menuAberto()">
-      <a href="#inicio" (click)="fecharMenu()">
+        <input
+          type="search"
+          name="buscaHeader"
+          placeholder="Buscar perfume..."
+          aria-label="Buscar perfume"
+          autocomplete="off"
+          [value]="termoBusca()"
+          (input)="atualizarBusca($event)"
+          (focus)="abrirSugestoes()"
+          (blur)="fecharSugestoes()"
+        >
+
+        <button
+          type="submit"
+          aria-label="Pesquisar perfume"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+
+        @if (mostrarSugestoes()) {
+
+          <div class="header__sugestoes">
+
+            @for (
+              produto of sugestoes();
+              track produto.id
+            ) {
+
+              <button
+                type="button"
+                class="header__sugestao"
+                (click)="selecionarSugestao(produto.nome)"
+              >
+
+                <div class="header__sugestao-imagem">
+                  <img
+                    [src]="produto.imagem"
+                    [alt]="produto.nome"
+                  >
+                </div>
+
+                <div class="header__sugestao-info">
+
+                  <strong>
+                    {{ produto.nome }}
+                  </strong>
+
+                  <span>
+                    {{ produto.marca }}
+                    ·
+                    {{ produto.volume }}
+                  </span>
+
+                </div>
+
+              </button>
+
+            }
+
+          </div>
+
+        }
+
+      </form>
+
+    </div>
+
+
+    <!-- NAVEGAÇÃO -->
+    <nav
+      class="header__nav"
+      [class.header__nav--aberto]="menuAberto()"
+    >
+
+      <a
+        href="#inicio"
+        (click)="fecharMenu()"
+      >
         Início
       </a>
 
-      <a href="#marcas" (click)="fecharMenu()">
-        Marcas
-      </a>
-
-      <a href="#catalogo" (click)="fecharMenu()">
+      <a
+        href="#catalogo"
+        (click)="fecharMenu()"
+      >
         Catálogo
       </a>
 
-      <a href="#como-comprar" (click)="fecharMenu()">
+      <a
+        href="#como-comprar"
+        (click)="fecharMenu()"
+      >
         Como comprar
       </a>
 
-      <a href="#contato" (click)="fecharMenu()">
+      <a
+        href="#contato"
+        (click)="fecharMenu()"
+      >
         Contato
       </a>
+
     </nav>
+
 
     <!-- AÇÕES -->
     <div class="header__actions">
 
+      <!-- LUPA MOBILE -->
+      <button
+        type="button"
+        class="
+          header__icon-button
+          header__search-mobile-button
+        "
+        aria-label="Pesquisar perfume"
+        [attr.aria-expanded]="buscaMobileAberta()"
+        (click)="alternarBuscaMobile()"
+      >
+
+        <i
+          class="bi"
+          [class.bi-search]="!buscaMobileAberta()"
+          [class.bi-x-lg]="buscaMobileAberta()"
+        ></i>
+
+      </button>
+
+
       <!-- FAVORITOS -->
-      <a routerLink="/favoritos" class="header__icon-button header__favorites" aria-label="Abrir favoritos"
-        (click)="fecharMenu()">
+      <a
+        routerLink="/favoritos"
+        class="
+          header__icon-button
+          header__favorites
+        "
+        aria-label="Abrir favoritos"
+        (click)="fecharMenu()"
+      >
         <i class="bi bi-heart"></i>
 
         @if (quantidadeFavoritos() > 0) {
-        <span class="header__favorites-count">
-          {{ quantidadeFavoritos() }}
-        </span>
+
+          <span class="header__favorites-count">
+            {{ quantidadeFavoritos() }}
+          </span>
+
         }
       </a>
 
+
       <!-- CARRINHO -->
-      <button type="button" class="header__icon-button header__cart" aria-label="Abrir carrinho"
-        (click)="fecharMenu(); abrirCarrinho()">
+      <button
+        type="button"
+        class="
+          header__icon-button
+          header__cart
+        "
+        aria-label="Abrir carrinho"
+        (click)="
+          fecharMenu();
+          abrirCarrinho()
+        "
+      >
         <i class="bi bi-bag"></i>
 
         @if (quantidadeCarrinho() > 0) {
-        <span class="header__cart-count">
-          {{ quantidadeCarrinho() }}
-        </span>
+
+          <span class="header__cart-count">
+            {{ quantidadeCarrinho() }}
+          </span>
+
         }
       </button>
 
+
       <!-- MENU MOBILE -->
-      <button type="button" class="header__icon-button header__menu-button" [attr.aria-label]="
+      <button
+        type="button"
+        class="
+          header__icon-button
+          header__menu-button
+        "
+        [attr.aria-label]="
           menuAberto()
             ? 'Fechar menu'
             : 'Abrir menu'
-        " [attr.aria-expanded]="menuAberto()" (click)="alternarMenu()">
-        <i class="bi" [class.bi-list]="!menuAberto()" [class.bi-x-lg]="menuAberto()"></i>
+        "
+        [attr.aria-expanded]="menuAberto()"
+        (click)="alternarMenu()"
+      >
+
+        <i
+          class="bi"
+          [class.bi-list]="!menuAberto()"
+          [class.bi-x-lg]="menuAberto()"
+        ></i>
+
       </button>
 
     </div>
 
   </div>
+
+
+  <!-- ====================================
+       PESQUISA MOBILE ABERTA
+  ===================================== -->
+
+  @if (buscaMobileAberta()) {
+
+    <div class="header__mobile-search">
+
+      <div class="container">
+
+        <form
+          class="header__search header__search--mobile"
+          (submit)="buscarNoCatalogo($event)"
+        >
+
+          <input
+            type="search"
+            name="buscaHeaderMobile"
+            placeholder="Buscar perfume..."
+            aria-label="Buscar perfume"
+            autocomplete="off"
+            [value]="termoBusca()"
+            (input)="atualizarBusca($event)"
+            (focus)="abrirSugestoes()"
+            (blur)="fecharSugestoes()"
+          >
+
+          <button
+            type="submit"
+            aria-label="Pesquisar perfume"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+
+
+          @if (mostrarSugestoes()) {
+
+            <div class="header__sugestoes">
+
+              @for (
+                produto of sugestoes();
+                track produto.id
+              ) {
+
+                <button
+                  type="button"
+                  class="header__sugestao"
+                  (click)="
+                    selecionarSugestao(produto.nome)
+                  "
+                >
+
+                  <div class="header__sugestao-imagem">
+
+                    <img
+                      [src]="produto.imagem"
+                      [alt]="produto.nome"
+                    >
+
+                  </div>
+
+                  <div class="header__sugestao-info">
+
+                    <strong>
+                      {{ produto.nome }}
+                    </strong>
+
+                    <span>
+                      {{ produto.marca }}
+                      ·
+                      {{ produto.volume }}
+                    </span>
+
+                  </div>
+
+                </button>
+
+              }
+
+            </div>
+
+          }
+
+        </form>
+
+      </div>
+
+    </div>
+
+  }
 
 </header>

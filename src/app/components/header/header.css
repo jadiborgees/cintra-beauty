@@ -9,10 +9,16 @@
 
   width: 100%;
 
-  background: var(--cor-branco);
+  background: #0d0d0d;
 
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  border: 0;
+
+  box-shadow: none;
 }
+
+/* ========================================
+   CONTEÚDO
+======================================== */
 
 .header__content {
   position: relative;
@@ -29,93 +35,268 @@
 }
 
 /* ========================================
+   ESQUERDA
+======================================== */
+
+.header__left {
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+
+  flex-shrink: 0;
+}
+
+/* ========================================
    LOGO
 ======================================== */
 
 .header__logo {
   display: flex;
   align-items: center;
-
-  gap: 8px;
+  justify-content: center;
 
   flex-shrink: 0;
 
   text-decoration: none;
 }
 
-/* EC */
-
 .header__logo-imagem {
   display: block;
 
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
 
   object-fit: contain;
-
-  flex-shrink: 0;
 }
 
-/* BLOCO DE TEXTO */
+/* ========================================
+   PESQUISA
+======================================== */
 
-.header__logo-texto {
+.header__search {
+  position: relative;
+
+  z-index: 50;
+
+  width: 290px;
+
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+
+.header__search input {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 44px 0 16px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 5px;
+
+  background: #171717;
+  color: var(--cor-branco);
+
+  font-size: 0.76rem;
+
+  outline: none;
+
+  transition:
+    border-color var(--transicao),
+    background var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.header__search input::placeholder {
+  color:
+    rgba(255, 255, 255, 0.38);
+}
+
+.header__search input:focus {
+  border-color:
+    var(--cor-dourado);
+
+  background: #1b1b1b;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(212, 175, 55, 0.08);
+}
+
+.header__search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* BOTÃO DA LUPA */
+
+.header__search > button {
+  position: absolute;
+
+  top: 50%;
+  right: 4px;
+
+  z-index: 2;
+
+  width: 36px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+
+  font-size: 0.9rem;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    color var(--transicao);
+}
+
+.header__search > button:hover {
+  color:
+    var(--cor-dourado);
+}
+
+/* ========================================
+   SUGESTÕES
+======================================== */
+
+.header__sugestoes {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 0;
+
+  z-index: 9999;
+
+  width: 100%;
+  max-height: 330px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 6px;
+
+  background: #151515;
+
+  box-shadow:
+    0 16px 40px
+    rgba(0, 0, 0, 0.55);
+}
+
+.header__sugestao {
+  position: static;
+
+  width: 100%;
+  height: auto;
+
+  display: flex;
   align-items: center;
 
-  line-height: 1;
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  border: 0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color:
+    var(--cor-branco);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transform: none;
 }
 
-/* ELEGANCE CINTRA */
-
-.header__logo-main {
-  color: var(--cor-preto);
-
-  font-family: Georgia, 'Times New Roman', serif;
-
-  font-size: 1.05rem;
-  font-weight: 400;
-
-  letter-spacing: 0.055em;
-
-  white-space: nowrap;
+.header__sugestao:last-child {
+  border-bottom: 0;
 }
 
-/* BEAUTY */
+.header__sugestao:hover {
+  background:
+    rgba(255, 255, 255, 0.06);
+}
 
-.header__logo-sub {
-  width: 100%;
+/* IMAGEM */
 
-  margin-top: 6px;
+.header__sugestao-imagem {
+  width: 42px;
+  height: 48px;
+
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 7px;
+  padding: 4px;
 
-  color: var(--cor-dourado);
+  background: #fff;
+}
 
-  font-size: 0.46rem;
-  font-weight: 700;
+.header__sugestao-imagem img {
+  width: 100%;
+  height: 100%;
 
-  letter-spacing: 0.42em;
+  object-fit: contain;
+}
+
+/* TEXTO */
+
+.header__sugestao-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.header__sugestao-info strong {
+  overflow: hidden;
+
+  color:
+    var(--cor-branco);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
 
   white-space: nowrap;
 }
 
-/* LINHAS AO LADO DO BEAUTY */
+.header__sugestao-info span {
+  color:
+    rgba(255, 255, 255, 0.5);
 
-.header__logo-sub::before,
-.header__logo-sub::after {
-  content: '';
-
-  width: 24px;
-  height: 1px;
-
-  flex-shrink: 0;
-
-  background: var(--cor-dourado);
+  font-size: 0.65rem;
 }
 
 /* ========================================
@@ -127,7 +308,7 @@
   align-items: center;
   justify-content: center;
 
-  gap: 26px;
+  gap: 25px;
 
   flex: 1;
 }
@@ -135,9 +316,10 @@
 .header__nav a {
   position: relative;
 
-  color: var(--cor-preto);
+  color:
+    rgba(255, 255, 255, 0.88);
 
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
 
   text-decoration: none;
@@ -145,7 +327,8 @@
 
   white-space: nowrap;
 
-  transition: color var(--transicao);
+  transition:
+    color var(--transicao);
 }
 
 .header__nav a::after {
@@ -159,13 +342,16 @@
   width: 0;
   height: 1px;
 
-  background: var(--cor-dourado);
+  background:
+    var(--cor-dourado);
 
-  transition: width var(--transicao);
+  transition:
+    width var(--transicao);
 }
 
 .header__nav a:hover {
-  color: var(--cor-dourado);
+  color:
+    var(--cor-dourado);
 }
 
 .header__nav a:hover::after {
@@ -194,12 +380,16 @@
   display: grid;
   place-items: center;
 
+  padding: 0;
+
   border: 0;
 
   background: transparent;
-  color: var(--cor-preto);
 
-  font-size: 1.25rem;
+  color:
+    var(--cor-branco);
+
+  font-size: 1.2rem;
 
   text-decoration: none;
 
@@ -211,55 +401,34 @@
 }
 
 .header__icon-button:hover {
-  color: var(--cor-dourado);
+  color:
+    var(--cor-dourado);
 
-  transform: translateY(-1px);
+  transform:
+    translateY(-1px);
+}
+
+/* LUPA MOBILE */
+
+.header__search-mobile-button {
+  display: none;
 }
 
 /* ========================================
-   FAVORITOS
+   CONTADORES
 ======================================== */
 
-.header__favorites {
-  position: relative;
-}
-
-.header__favorites-count {
-  position: absolute;
-
-  top: 2px;
-  right: 1px;
-
-  min-width: 17px;
-  height: 17px;
-
-  padding: 0 4px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 999px;
-
-  background: var(--cor-dourado);
-  color: var(--cor-preto);
-
-  font-size: 0.62rem;
-  font-weight: 700;
-}
-
-/* ========================================
-   CARRINHO
-======================================== */
-
+.header__favorites,
 .header__cart {
   position: relative;
 }
 
+.header__favorites-count,
 .header__cart-count {
   position: absolute;
 
-  top: 2px;
-  right: 1px;
+  top: 1px;
+  right: 0;
 
   min-width: 17px;
   height: 17px;
@@ -271,10 +440,13 @@
 
   border-radius: 999px;
 
-  background: var(--cor-dourado);
-  color: var(--cor-preto);
+  background:
+    var(--cor-dourado);
 
-  font-size: 0.62rem;
+  color:
+    var(--cor-preto);
+
+  font-size: 0.6rem;
   font-weight: 700;
 }
 
@@ -291,58 +463,63 @@
 }
 
 /* ========================================
+   PESQUISA MOBILE ABERTA
+======================================== */
+
+.header__mobile-search {
+  display: none;
+}
+
+/* ========================================
    NOTEBOOK
 ======================================== */
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
+
   .header__content {
-    gap: 16px;
+    gap: 18px;
+  }
+
+  .header__left {
+    gap: 24px;
   }
 
   .header__logo-imagem {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
   }
 
-  .header__logo-main {
-    font-size: 0.9rem;
-  }
-
-  .header__logo-sub {
-    font-size: 0.4rem;
-
-    gap: 5px;
-  }
-
-  .header__logo-sub::before,
-  .header__logo-sub::after {
-    width: 18px;
+  .header__search {
+    width: 220px;
   }
 
   .header__nav {
-    gap: 14px;
+    gap: 16px;
   }
 
   .header__nav a {
-    font-size: 0.62rem;
+    font-size: 0.63rem;
   }
 }
 
 /* ========================================
-   TABLET / MOBILE
+   TABLET
 ======================================== */
 
 @media (max-width: 900px) {
+
   .header__content {
     min-height: 78px;
 
-    gap: 8px;
+    gap: 10px;
   }
 
-  .header__logo {
+  .header__left {
+    flex: 1;
+
     min-width: 0;
 
-    gap: 7px;
+    gap: 18px;
   }
 
   .header__logo-imagem {
@@ -350,24 +527,12 @@
     height: 46px;
   }
 
-  .header__logo-main {
-    font-size: 1rem;
+  .header__search--desktop {
+    width:
+      min(280px, 100%);
   }
 
-  .header__logo-sub {
-    margin-top: 5px;
-
-    font-size: 0.43rem;
-
-    letter-spacing: 0.36em;
-  }
-
-  .header__logo-sub::before,
-  .header__logo-sub::after {
-    width: 20px;
-  }
-
-  /* MENU FECHADO */
+  /* MENU */
 
   .header__nav {
     position: absolute;
@@ -375,7 +540,7 @@
     top: 100%;
     left: 0;
 
-    z-index: 4;
+    z-index: 40;
 
     width: 100%;
 
@@ -387,17 +552,17 @@
 
     padding: 0;
 
-    background: var(--cor-branco);
+    background: #0d0d0d;
 
-    border-top: 1px solid var(--cor-cinza-claro);
-    border-bottom: 1px solid var(--cor-cinza-claro);
-
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+    box-shadow:
+      0 16px 30px
+      rgba(0, 0, 0, 0.3);
 
     opacity: 0;
     visibility: hidden;
 
-    transform: translateY(-10px);
+    transform:
+      translateY(-10px);
 
     pointer-events: none;
 
@@ -407,13 +572,12 @@
       visibility var(--transicao);
   }
 
-  /* MENU ABERTO */
-
   .header__nav--aberto {
     opacity: 1;
     visibility: visible;
 
-    transform: translateY(0);
+    transform:
+      translateY(0);
 
     pointer-events: auto;
   }
@@ -423,7 +587,9 @@
 
     padding: 16px 24px;
 
-    border-bottom: 1px solid var(--cor-cinza-claro);
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.08);
 
     font-size: 0.72rem;
 
@@ -436,12 +602,6 @@
 
   .header__nav a::after {
     display: none;
-  }
-
-  .header__nav a:hover {
-    background: var(--cor-off-white);
-
-    color: var(--cor-dourado);
   }
 
   .header__menu-button {
@@ -460,78 +620,78 @@
 
     display: block;
 
-    background: rgba(0, 0, 0, 0.35);
+    background:
+      rgba(0, 0, 0, 0.5);
 
-    backdrop-filter: blur(2px);
+    backdrop-filter:
+      blur(2px);
   }
 }
 
 /* ========================================
-   CELULAR
+   MOBILE
 ======================================== */
 
 @media (max-width: 520px) {
-  .header__content {
-    min-height: 76px;
 
-    gap: 2px;
+  /* HEADER VOLTA A UMA LINHA */
+
+  .header__content {
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
-  .header__logo {
-    min-width: 0;
+  /* ESQUERDA */
 
-    gap: 5px;
+  .header__left {
+    display: flex;
+    align-items: center;
 
     flex: 1;
+
+    min-width: 0;
   }
 
-  /* EC */
+  /* LOGO */
+
+  .header__logo {
+    flex-shrink: 0;
+  }
 
   .header__logo-imagem {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
   }
 
-  /* ELEGANCE CINTRA */
+  /* ESCONDE BUSCA DESKTOP */
 
-  .header__logo-main {
-    font-size: 0.92rem;
-
-    letter-spacing: 0.035em;
-  }
-
-  /* BEAUTY */
-
-  .header__logo-sub {
-    margin-top: 5px;
-
-    gap: 4px;
-
-    font-size: 0.39rem;
-
-    letter-spacing: 0.3em;
-  }
-
-  .header__logo-sub::before,
-  .header__logo-sub::after {
-    width: 15px;
+  .header__search--desktop {
+    display: none;
   }
 
   /* AÇÕES */
 
   .header__actions {
-    gap: 0;
+    gap: 1px;
+  }
 
-    flex-shrink: 0;
+  .header__search-mobile-button {
+    display: grid;
   }
 
   .header__icon-button {
-    width: 33px;
-    height: 36px;
+    width: 36px;
+    height: 38px;
 
-    padding: 0;
-
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
 
   .header__favorites-count,
@@ -547,8 +707,75 @@
     font-size: 0.54rem;
   }
 
+  /* ========================================
+     BUSCA MOBILE ABERTA
+  ======================================== */
+
+  .header__mobile-search {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    z-index: 50;
+
+    width: 100%;
+
+    display: block;
+
+    padding: 10px 0;
+
+    background: #0d0d0d;
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+      0 12px 25px
+      rgba(0, 0, 0, 0.25);
+  }
+
+  .header__search--mobile {
+    width: 100%;
+  }
+
+  .header__search--mobile input {
+    width: 100%;
+    height: 42px;
+
+    padding-left: 14px;
+    padding-right: 44px;
+
+    font-size: 0.74rem;
+  }
+
+  .header__search--mobile > button {
+    right: 4px;
+  }
+
+  /* SUGESTÕES MOBILE */
+
+  .header__search--mobile
+  .header__sugestoes {
+    top: calc(100% + 6px);
+
+    max-height: 280px;
+  }
+
+  .header__sugestao {
+    padding: 9px 10px;
+  }
+
+  .header__sugestao-imagem {
+    width: 38px;
+    height: 44px;
+  }
+
+  /* MENU */
+
   .header__menu-overlay {
-    top: 76px;
+    top: 70px;
   }
 
   .header__nav a {

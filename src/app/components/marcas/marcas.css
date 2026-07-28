@@ -1,13 +1,17 @@
 .marcas {
-  padding: 65px 0;
+  padding: 42px 0 70px;
 
   overflow: hidden;
 
   background: var(--cor-preto);
 }
 
+/* ========================================
+   CABEÇALHO
+======================================== */
+
 .marcas__cabecalho {
-  margin-bottom: 35px;
+  margin-bottom: 26px;
 
   text-align: center;
 }
@@ -17,20 +21,29 @@
 
   margin-bottom: 8px;
 
-  color: var(--cor-dourado);
+  color: #d4af37;
 
   font-size: 0.7rem;
   font-weight: 700;
 
   letter-spacing: 0.2em;
   text-transform: uppercase;
+
+  opacity: 1;
 }
 
 .marcas__cabecalho h2 {
+  margin: 0;
+
   color: var(--cor-branco);
+
+  font-size: 1.9rem;
+  line-height: 1.05;
 }
 
-/* Área visível do carrossel */
+/* ========================================
+   CARROSSEL
+======================================== */
 
 .marcas__carrossel {
   position: relative;
@@ -40,7 +53,9 @@
   overflow: hidden;
 }
 
-/* Gradiente nas bordas */
+/* ========================================
+   GRADIENTE NAS LATERAIS
+======================================== */
 
 .marcas__carrossel::before,
 .marcas__carrossel::after {
@@ -49,11 +64,11 @@
   position: absolute;
 
   top: 0;
+  bottom: 0;
 
   z-index: 2;
 
-  width: 120px;
-  height: 100%;
+  width: 90px;
 
   pointer-events: none;
 }
@@ -61,24 +76,28 @@
 .marcas__carrossel::before {
   left: 0;
 
-  background: linear-gradient(
-    90deg,
-    var(--cor-preto),
-    transparent
-  );
+  background:
+    linear-gradient(
+      90deg,
+      var(--cor-preto) 0%,
+      transparent 100%
+    );
 }
 
 .marcas__carrossel::after {
   right: 0;
 
-  background: linear-gradient(
-    -90deg,
-    var(--cor-preto),
-    transparent
-  );
+  background:
+    linear-gradient(
+      -90deg,
+      var(--cor-preto) 0%,
+      transparent 100%
+    );
 }
 
-/* Faixa animada */
+/* ========================================
+   FAIXA ANIMADA
+======================================== */
 
 .marcas__faixa {
   width: max-content;
@@ -86,58 +105,137 @@
   display: flex;
   align-items: center;
 
-  gap: 20px;
+  gap: 16px;
 
-  animation: deslizar-marcas 28s linear infinite;
+  animation:
+    deslizar-marcas
+    28s
+    linear
+    infinite;
 }
-
-/* Pausa ao passar o mouse */
 
 .marcas__carrossel:hover .marcas__faixa {
   animation-play-state: paused;
 }
 
-/* Cada marca */
+/* ========================================
+   CARD DA MARCA
+======================================== */
 
 .marca {
-  min-width: 220px;
-  height: 90px;
+  width: 210px;
+  height: 105px;
+
+  flex-shrink: 0;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 20px 30px;
+  gap: 7px;
+
+  padding: 10px 18px;
 
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   background: var(--cor-preto-suave);
+
   color: var(--cor-branco);
 
-  font-family: Georgia, 'Times New Roman', serif;
-
-  font-size: 1rem;
-  font-weight: 400;
-
-  letter-spacing: 0.05em;
-
-  white-space: nowrap;
+  cursor: default;
 
   transition:
     border-color var(--transicao),
+    background-color var(--transicao),
     color var(--transicao),
     transform var(--transicao);
 }
 
+/* ========================================
+   LOGO DA MARCA
+======================================== */
+
+.marca__logo {
+  display: block;
+
+  width: 100%;
+  max-width: 105px;
+  height: 48px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  transition:
+    transform var(--transicao),
+    opacity var(--transicao);
+}
+
+/* Algumas logos são mais horizontais */
+
+.marca:nth-child(3) .marca__logo,
+.marca:nth-child(4) .marca__logo,
+.marca:nth-child(5) .marca__logo,
+.marca:nth-child(7) .marca__logo,
+.marca:nth-child(8) .marca__logo {
+  max-width: 120px;
+}
+
+/* ========================================
+   NOME DA MARCA
+======================================== */
+
+.marca__nome {
+  display: block;
+
+  max-width: 100%;
+
+  overflow: hidden;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 0.68rem;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+
+  text-align: center;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  transition: color var(--transicao);
+}
+
+/* ========================================
+   HOVER
+======================================== */
+
 .marca:hover {
   border-color: var(--cor-dourado);
 
+  background: #181818;
+
   color: var(--cor-dourado);
 
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
-/* Animação infinita */
+.marca:hover .marca__logo {
+  transform: scale(1.04);
+}
+
+.marca:hover .marca__nome {
+  color: var(--cor-dourado);
+}
+
+/* ========================================
+   ANIMAÇÃO
+======================================== */
 
 @keyframes deslizar-marcas {
   from {
@@ -145,30 +243,142 @@
   }
 
   to {
-    transform: translateX(calc(-50% - 10px));
+    transform: translateX(
+      calc(-50% - 8px)
+    );
   }
 }
 
-@media (max-width: 768px) {
+/* ========================================
+   NOTEBOOK
+======================================== */
+
+@media (max-width: 1100px) {
+
   .marcas {
-    padding: 50px 0;
+    padding: 38px 0 58px;
   }
 
-  .marca {
-    min-width: 180px;
-    height: 78px;
+  .marcas__cabecalho {
+    margin-bottom: 24px;
+  }
 
-    padding: 18px 24px;
-
-    font-size: 0.9rem;
+  .marcas__cabecalho h2 {
+    font-size: 1.75rem;
   }
 
   .marcas__faixa {
-    animation-duration: 22s;
+    gap: 14px;
+  }
+
+  .marca {
+    width: 190px;
+    height: 98px;
+
+    padding: 9px 16px;
+  }
+
+  .marca__logo {
+    max-width: 100px;
+    height: 44px;
+  }
+
+  .marca__nome {
+    font-size: 0.65rem;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 768px) {
+
+  .marca {
+    min-width: 155px;
+    height: 105px;
+
+    padding: 12px 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+  }
+
+  /* AUMENTA A LOGO NO MOBILE */
+  .marca__logo {
+    width: auto;
+    height: 48px;
+    max-width: 115px;
+
+    object-fit: contain;
+  }
+
+  /* NOME DA MARCA */
+  .marca__nome {
+    font-size: 0.68rem;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 520px) {
+
+  .marcas {
+    padding: 56px 0 34px;
+  }
+
+  .marcas__cabecalho {
+    margin-bottom: 18px;
+  }
+
+  .marcas__subtitulo {
+    margin-bottom: 6px;
+
+    font-size: 0.5rem;
+  }
+
+  .marcas__cabecalho h2 {
+    font-size: 1.35rem;
+  }
+
+  .marcas__faixa {
+    gap: 10px;
+
+    animation-duration: 20s;
+  }
+
+  .marca {
+    width: 145px;
+    height: 84px;
+
+    gap: 5px;
+
+    padding: 7px 12px;
+  }
+
+  .marca__logo {
+    max-width: 82px;
+    height: 37px;
+  }
+
+  .marca__nome {
+    font-size: 0.57rem;
+
+    letter-spacing: 0.03em;
   }
 
   .marcas__carrossel::before,
   .marcas__carrossel::after {
-    width: 50px;
+    width: 28px;
   }
 }

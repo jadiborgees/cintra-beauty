@@ -1,9 +1,11 @@
 <section id="inicio" class="hero">
 
+  <!-- CAMADA ESCURA -->
   <div class="hero__overlay"></div>
 
   <div class="container hero__content">
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="hero__text">
 
       <span class="hero__eyebrow">
@@ -15,20 +17,29 @@
         <span>luxo em cada essência</span>
       </h1>
 
-      <p>
+      <p class="hero__descricao">
         Perfumes selecionados para quem valoriza elegância,
         personalidade e exclusividade.
       </p>
 
+      <!-- BOTÕES -->
       <div class="hero__actions">
 
         <!-- CATÁLOGO -->
         <a
           href="#catalogo"
-          class="botao botao-dourado"
+          class="botao botao-dourado hero__catalogo"
           aria-label="Ver catálogo de perfumes"
         >
-          Ver catálogo
+          <span class="hero__botao-conteudo">
+            <i class="bi bi-bag"></i>
+            <span>Ver catálogo</span>
+          </span>
+
+          <i
+            class="bi bi-chevron-right hero__botao-seta"
+            aria-hidden="true"
+          ></i>
         </a>
 
         <!-- WHATSAPP -->
@@ -40,8 +51,76 @@
           aria-label="Falar com a Elegance Cintra pelo WhatsApp"
         >
           <i class="bi bi-whatsapp"></i>
-          Falar no WhatsApp
+          <span>Falar no WhatsApp</span>
         </a>
+
+      </div>
+
+
+      <!-- BENEFÍCIOS -->
+      <div class="hero__beneficios">
+
+        <!-- ORIGINALIDADE -->
+        <div class="hero__beneficio">
+
+          <i
+            class="bi bi-shield-check hero__beneficio-icone"
+            aria-hidden="true"
+          ></i>
+
+          <div class="hero__beneficio-texto">
+            <strong>
+              Produtos
+            </strong>
+
+            <span>
+              100% originais
+            </span>
+          </div>
+
+        </div>
+
+
+        <!-- ATENDIMENTO -->
+        <div class="hero__beneficio">
+
+          <i
+            class="bi bi-award hero__beneficio-icone"
+            aria-hidden="true"
+          ></i>
+
+          <div class="hero__beneficio-texto">
+            <strong>
+              Atendimento
+            </strong>
+
+            <span>
+              Personalizado
+            </span>
+          </div>
+
+        </div>
+
+
+        <!-- SEGURANÇA -->
+        <div class="hero__beneficio">
+
+          <i
+            class="bi bi-bag-check hero__beneficio-icone"
+            aria-hidden="true"
+          ></i>
+
+          <div class="hero__beneficio-texto">
+            <strong>
+              Compra segura
+            </strong>
+
+            <span>
+              E confiável
+            </span>
+          </div>
+
+        </div>
 
       </div>
 
