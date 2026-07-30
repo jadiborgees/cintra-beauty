@@ -569,77 +569,73 @@
   ======================================== */
 
   .hero__beneficios {
-    width: 100%;
+  width: 100%;
 
-    margin-top: 22px;
-    padding-top: 12px;
+  margin-top: 22px;
+  padding-top: 14px;
 
-    display: grid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 
-    gap: 7px;
+  border-top: 1px solid rgba(255,255,255,.15);
+}
 
-    border-top:
-      1px solid rgba(255, 255, 255, 0.13);
-  }
+.hero__beneficio {
+  display: flex;
+  flex-direction: column;
 
-  .hero__beneficio {
-    min-width: 0;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: flex-start;
+  text-align: center;
 
-    gap: 6px;
-  }
+  padding: 0 6px;
+}
 
-  /* ÍCONE */
+.hero__beneficio:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,.08);
+}
 
-  .hero__beneficio-icone {
-    flex-shrink: 0;
+.hero__beneficio-icone,
+.hero__beneficio i {
+  color: var(--cor-dourado);
 
-    color:
-      var(--cor-dourado);
+  font-size: 1.15rem;
 
-    font-size: 1rem;
+  margin-bottom: 8px;
+}
 
-    line-height: 1;
-  }
+.hero__beneficio-texto {
+  display: flex;
+  flex-direction: column;
 
-  /* TEXTO */
+  align-items: center;
 
-  .hero__beneficio-texto {
-    min-width: 0;
+  gap: 2px;
+}
 
-    display: flex;
-    flex-direction: column;
+.hero__beneficio-texto strong {
+  color: var(--cor-branco);
 
-    gap: 2px;
-  }
+  font-size: .50rem;
+  font-weight: 700;
 
-  .hero__beneficio-texto strong {
-    color:
-      var(--cor-branco);
+  line-height: 1.2;
 
-    font-size: 0.45rem;
-    font-weight: 700;
+  text-transform: uppercase;
+}
 
-    line-height: 1.2;
+.hero__beneficio-texto span {
+  color: rgba(255,255,255,.72);
 
-    text-transform: uppercase;
-  }
+  font-size: .36rem;
 
-  .hero__beneficio-texto span {
-    color:
-      rgba(255, 255, 255, 0.7);
+  line-height: 1.2;
 
-    font-size: 0.38rem;
-
-    line-height: 1.25;
-
-    text-transform: uppercase;
-  }
+  text-transform: uppercase;
+}
 }
 
 /* ========================================
@@ -648,54 +644,20 @@
 
 @media (max-width: 380px) {
 
-  .hero {
-    min-height: 540px;
+.hero__beneficio {
+  padding: 0 2px;
+}
 
-    padding-bottom: 18px;
+.hero__beneficio-icone,
+.hero__beneficio i {
+  font-size: .95rem;
+}
 
-    background-position:
-      64% center;
-  }
+.hero__beneficio-texto strong {
+  font-size: .42rem;
+}
 
-  .hero .hero__content {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .hero h1 {
-    max-width: 290px;
-
-    font-size: 2.15rem;
-  }
-
-  .hero__descricao,
-  .hero p {
-    max-width: 290px;
-
-    font-size: 0.78rem;
-  }
-
-  .hero__actions {
-    max-width: 290px;
-  }
-
-  .hero__beneficios {
-    gap: 5px;
-  }
-
-  .hero__beneficio {
-    gap: 4px;
-  }
-
-  .hero__beneficio-icone {
-    font-size: 0.9rem;
-  }
-
-  .hero__beneficio-texto strong {
-    font-size: 0.4rem;
-  }
-
-  .hero__beneficio-texto span {
-    font-size: 0.34rem;
-  }
+.hero__beneficio-texto span {
+  font-size: .31rem;
+}
 }

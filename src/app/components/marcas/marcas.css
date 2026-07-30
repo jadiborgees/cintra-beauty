@@ -51,6 +51,12 @@
   width: 100%;
 
   overflow: hidden;
+
+  cursor: default;
+
+  user-select: none;
+
+  touch-action: pan-y;
 }
 
 /* ========================================
@@ -107,15 +113,13 @@
 
   gap: 16px;
 
-  animation:
-    deslizar-marcas
-    28s
-    linear
-    infinite;
-}
+  animation: deslizar-marcas 28s linear infinite;
 
-.marcas__carrossel:hover .marcas__faixa {
-  animation-play-state: paused;
+  will-change: transform;
+
+  pointer-events: none;
+
+  user-select: none;
 }
 
 /* ========================================
@@ -145,11 +149,9 @@
 
   cursor: default;
 
-  transition:
-    border-color var(--transicao),
-    background-color var(--transicao),
-    color var(--transicao),
-    transform var(--transicao);
+  pointer-events: none;
+
+  user-select: none;
 }
 
 /* ========================================
@@ -167,9 +169,11 @@
 
   flex-shrink: 0;
 
-  transition:
-    transform var(--transicao),
-    opacity var(--transicao);
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
 }
 
 /* Algumas logos são mais horizontais */
@@ -208,29 +212,9 @@
 
   white-space: nowrap;
 
-  transition: color var(--transicao);
-}
+  pointer-events: none;
 
-/* ========================================
-   HOVER
-======================================== */
-
-.marca:hover {
-  border-color: var(--cor-dourado);
-
-  background: #181818;
-
-  color: var(--cor-dourado);
-
-  transform: translateY(-2px);
-}
-
-.marca:hover .marca__logo {
-  transform: scale(1.04);
-}
-
-.marca:hover .marca__nome {
-  color: var(--cor-dourado);
+  user-select: none;
 }
 
 /* ========================================
@@ -294,7 +278,13 @@
 
 @media (max-width: 768px) {
 
+  .marcas__carrossel::before,
+  .marcas__carrossel::after {
+    width: 50px;
+  }
+
   .marca {
+    width: 155px;
     min-width: 155px;
     height: 105px;
 
@@ -308,7 +298,6 @@
     gap: 8px;
   }
 
-  /* AUMENTA A LOGO NO MOBILE */
   .marca__logo {
     width: auto;
     height: 48px;
@@ -317,7 +306,6 @@
     object-fit: contain;
   }
 
-  /* NOME DA MARCA */
   .marca__nome {
     font-size: 0.68rem;
 
@@ -359,6 +347,7 @@
 
   .marca {
     width: 145px;
+    min-width: 145px;
     height: 84px;
 
     gap: 5px;
