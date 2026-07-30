@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './hero.html',
   styleUrl: './hero.css'
 })
-export class Hero {}
+export class Hero {
+
+  readonly whatsAppLink =
+    'https://wa.me/5515988239922?text=' +
+    encodeURIComponent(
+      'Olá! 👋\n\nTenho interesse em conhecer os perfumes da Elegance Cintra Beauty. Poderia me ajudar?'
+    );
+
+}
