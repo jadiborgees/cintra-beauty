@@ -21,7 +21,11 @@
     url('/hero-perfume (2).png');
 
   background-repeat: no-repeat;
+
+  /* DIMINUI A IMAGEM SEM ALTERAR A PROPORÇÃO */
   background-size: 90% auto;
+
+  /* JOGA A IMAGEM PARA A DIREITA */
   background-position: right center;
 }
 
@@ -34,12 +38,10 @@
   inset: 0;
 
   background:
-    radial-gradient(
-      circle at 70% 50%,
+    radial-gradient(circle at 70% 50%,
       transparent 0%,
       rgba(0, 0, 0, 0.1) 50%,
-      rgba(0, 0, 0, 0.35) 100%
-    );
+      rgba(0, 0, 0, 0.35) 100%);
 }
 
 /* ========================================
@@ -113,14 +115,12 @@
   margin-top: 10px;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       var(--ouro-escuro) 0%,
       var(--ouro-medio) 25%,
       var(--ouro-claro) 50%,
       var(--ouro-medio) 75%,
-      var(--ouro-escuro) 100%
-    );
+      var(--ouro-escuro) 100%);
 
   -webkit-background-clip: text;
   background-clip: text;
@@ -175,12 +175,11 @@
 
   padding: 0.8rem 1.4rem;
 
+  background-color: #c9a227;
+  color: #0b0b0b;
+
   border: 1px solid #c9a227;
   border-radius: var(--raio-pequeno);
-
-  background-color: #c9a227;
-
-  color: #0b0b0b;
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -193,21 +192,17 @@
 .hero__catalogo,
 .hero__catalogo:visited {
   background-color: #c9a227;
-
   color: #0b0b0b;
 }
 
 .hero__catalogo:hover {
-  border-color: #e8cc6a;
-
   background-color: #e8cc6a;
+  border-color: #e8cc6a;
 
   color: #0b0b0b;
 }
 
-/* ========================================
-   CONTEÚDO DO BOTÃO
-======================================== */
+/* CONTEÚDO DO BOTÃO */
 
 .hero__botao-conteudo {
   display: inline-flex;
@@ -224,9 +219,7 @@
   color: inherit;
 }
 
-/* ========================================
-   SETA
-======================================== */
+/* SETA */
 
 .hero__botao-seta {
   display: none;
@@ -248,15 +241,19 @@
   border:
     1px solid rgba(255, 255, 255, 0.7);
 
-  background: transparent;
+  color:
+    var(--cor-branco);
 
-  color: var(--cor-branco);
+  background:
+    transparent;
 }
 
 .hero__whatsapp:hover {
-  background: var(--cor-branco);
+  color:
+    var(--cor-preto);
 
-  color: var(--cor-preto);
+  background:
+    var(--cor-branco);
 }
 
 /* ========================================
@@ -277,7 +274,8 @@
   .hero {
     min-height: 600px;
 
-    background-position: 63% center;
+    background-position:
+      63% center;
   }
 
   .hero::before {
@@ -331,11 +329,11 @@
 
     align-items: flex-end;
 
-    padding-top: 20px;
-    padding-bottom: 26px;
+    padding-top: 24px;
+    padding-bottom: 32px;
 
-    background-size: auto 96%;
-    background-position: 61% center;
+    background-size: auto 100%;
+    background-position: 67% center;
   }
 
   /* ========================================
@@ -351,25 +349,21 @@
     z-index: 1;
 
     background:
-      linear-gradient(
-        180deg,
+      linear-gradient(180deg,
         rgba(0, 0, 0, 0.12) 0%,
         rgba(0, 0, 0, 0.24) 32%,
         rgba(0, 0, 0, 0.68) 72%,
-        rgba(0, 0, 0, 0.92) 100%
-      );
+        rgba(0, 0, 0, 0.92) 100%);
   }
 
   .hero__overlay {
     z-index: 1;
 
     background:
-      radial-gradient(
-        circle at 65% 28%,
+      radial-gradient(circle at 65% 28%,
         transparent 0%,
         rgba(0, 0, 0, 0.05) 40%,
-        rgba(0, 0, 0, 0.28) 100%
-      );
+        rgba(0, 0, 0, 0.28) 100%);
   }
 
   /* ========================================
@@ -403,9 +397,9 @@
   .hero__eyebrow {
     position: relative;
 
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     font-weight: 700;
 
     letter-spacing: 0.16em;
@@ -417,7 +411,7 @@
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 30px;
     height: 1px;
@@ -433,27 +427,25 @@
   .hero h1 {
     max-width: 330px;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 
-    font-size: 2.35rem;
+    font-size: 2.45rem;
 
-    line-height: 0.97;
+    line-height: 0.98;
   }
 
   .hero h1 span {
     position: relative;
 
-    margin-top: 4px;
+    margin-top: 5px;
 
     background:
-      linear-gradient(
-        90deg,
+      linear-gradient(90deg,
         #8f6b16 0%,
         #c49a2c 20%,
         #f3dfa0 48%,
         #c49a2c 72%,
-        #8f6b16 100%
-      );
+        #8f6b16 100%);
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -471,14 +463,14 @@
   .hero p {
     max-width: 330px;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 
     color:
       rgba(255, 255, 255, 0.92);
 
-    font-size: 0.76rem;
+    font-size: 0.82rem;
 
-    line-height: 1.45;
+    line-height: 1.55;
   }
 
   /* ========================================
@@ -493,18 +485,18 @@
     flex-direction: column;
     align-items: stretch;
 
-    gap: 7px;
+    gap: 9px;
   }
 
   .hero__actions .botao {
     width: 100%;
 
-    min-height: 40px;
+    min-height: 45px;
 
     padding:
-      0 12px;
+      0 14px;
 
-    font-size: 0.66rem;
+    font-size: 0.7rem;
     font-weight: 700;
 
     text-align: center;
@@ -512,27 +504,24 @@
     text-transform: uppercase;
   }
 
-  /* ========================================
-     CATÁLOGO
-  ======================================== */
+  /* CATÁLOGO */
 
   .hero__catalogo {
     position: relative;
 
     width: 100%;
-    min-height: 40px;
+    min-height: 45px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0 38px;
-
-    border: 1px solid #c9a227;
+    padding: 0 42px;
 
     background-color: #c9a227;
-
     color: #0b0b0b;
+
+    border: 1px solid #c9a227;
 
     opacity: 1;
   }
@@ -542,7 +531,7 @@
     align-items: center;
     justify-content: center;
 
-    gap: 7px;
+    gap: 8px;
 
     margin: 0 auto;
   }
@@ -550,30 +539,26 @@
   .hero__botao-seta {
     position: absolute;
 
+    right: 14px;
     top: 50%;
-    right: 13px;
 
     display: inline-block;
 
+    transform: translateY(-50%);
+
     color: #0b0b0b;
 
-    font-size: 0.66rem;
-
-    transform: translateY(-50%);
+    font-size: 0.7rem;
   }
 
-  /* ========================================
-     WHATSAPP
-  ======================================== */
+  /* WHATSAPP */
 
   .hero__whatsapp {
-    min-height: 40px;
+    background:
+      rgba(0, 0, 0, 0.35);
 
     border:
       1px solid rgba(255, 255, 255, 0.65);
-
-    background:
-      rgba(0, 0, 0, 0.35);
 
     color:
       var(--cor-branco);
@@ -584,79 +569,73 @@
   ======================================== */
 
   .hero__beneficios {
-    width: 100%;
+  width: 100%;
 
-    margin-top: 16px;
-    padding-top: 10px;
+  margin-top: 22px;
+  padding-top: 14px;
 
-    display: grid;
-    grid-template-columns:
-      repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-    align-items: stretch;
+  align-items: stretch;
 
-    border-top:
-      1px solid rgba(255, 255, 255, 0.15);
-  }
+  border-top: 1px solid rgba(255,255,255,.15);
+}
 
-  .hero__beneficio {
-    display: flex;
-    flex-direction: column;
+.hero__beneficio {
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    padding: 0 6px;
+  text-align: center;
 
-    text-align: center;
-  }
+  padding: 0 6px;
+}
 
-  .hero__beneficio:not(:last-child) {
-    border-right:
-      1px solid rgba(255, 255, 255, 0.08);
-  }
+.hero__beneficio:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,.08);
+}
 
-  .hero__beneficio-icone,
-  .hero__beneficio i {
-    margin-bottom: 6px;
+.hero__beneficio-icone,
+.hero__beneficio i {
+  color: var(--cor-dourado);
 
-    color:
-      var(--cor-dourado);
+  font-size: 1.15rem;
 
-    font-size: 1.08rem;
-  }
+  margin-bottom: 8px;
+}
 
-  .hero__beneficio-texto {
-    display: flex;
-    flex-direction: column;
+.hero__beneficio-texto {
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
+  align-items: center;
 
-    gap: 2px;
-  }
+  gap: 2px;
+}
 
-  .hero__beneficio-texto strong {
-    color:
-      var(--cor-branco);
+.hero__beneficio-texto strong {
+  color: var(--cor-branco);
 
-    font-size: 0.48rem;
-    font-weight: 700;
+  font-size: .50rem;
+  font-weight: 700;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    text-transform: uppercase;
-  }
+  text-transform: uppercase;
+}
 
-  .hero__beneficio-texto span {
-    color:
-      rgba(255, 255, 255, 0.72);
+.hero__beneficio-texto span {
+  color: rgba(255,255,255,.72);
 
-    font-size: 0.35rem;
+  font-size: .36rem;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    text-transform: uppercase;
-  }
+  text-transform: uppercase;
+}
 }
 
 /* ========================================
@@ -665,55 +644,20 @@
 
 @media (max-width: 380px) {
 
-  .hero {
-    min-height: 540px;
+.hero__beneficio {
+  padding: 0 2px;
+}
 
-    background-size: auto 95%;
-    background-position: 60% center;
-  }
+.hero__beneficio-icone,
+.hero__beneficio i {
+  font-size: .95rem;
+}
 
-  .hero .hero__content {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+.hero__beneficio-texto strong {
+  font-size: .42rem;
+}
 
-  .hero h1 {
-    max-width: 300px;
-
-    font-size: 2.15rem;
-  }
-
-  .hero__descricao,
-  .hero p {
-    max-width: 300px;
-
-    font-size: 0.72rem;
-  }
-
-  .hero__actions {
-    max-width: 300px;
-  }
-
-  .hero__actions .botao,
-  .hero__catalogo,
-  .hero__whatsapp {
-    min-height: 39px;
-  }
-
-  .hero__beneficio {
-    padding: 0 2px;
-  }
-
-  .hero__beneficio-icone,
-  .hero__beneficio i {
-    font-size: 0.95rem;
-  }
-
-  .hero__beneficio-texto strong {
-    font-size: 0.42rem;
-  }
-
-  .hero__beneficio-texto span {
-    font-size: 0.31rem;
-  }
+.hero__beneficio-texto span {
+  font-size: .31rem;
+}
 }
